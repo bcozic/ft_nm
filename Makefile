@@ -6,7 +6,7 @@
 #    By: bcozic <bcozic@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/03/19 12:22:35 by barbara           #+#    #+#              #
-#    Updated: 2018/12/06 07:39:47 by bcozic           ###   ########.fr        #
+#    Updated: 2018/12/06 14:43:03 by bcozic           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,8 +20,7 @@ RED=\x1b[31;01m
 
 CFLAGS = -Wall -Wextra -Werror -Weverything -g
 
-SRC = main.c
-
+SRC = main.c get_stat.c ft_nm.c
 
 OBJ = $(addprefix obj/, $(SRC:.c=.o))
 
@@ -31,7 +30,7 @@ INC_LIB = libft/includes
 
 INC_NM = includes
 
-INCLUDE_NM = $(INC_NM)/ft_nm.h
+INCLUDE_NM = $(INC_NM)/ft_nm_otool.h
 
 all : lib obj $(NAME)
 

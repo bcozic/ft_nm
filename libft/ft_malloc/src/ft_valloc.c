@@ -39,7 +39,8 @@ static void		*get_ptr_begin_page(t_mem *packet, size_t size)
 	return (ptr);
 }
 
-static void		*get_memory_begin_page(t_zone *zone, size_t size, size_t nb_page)
+static void		*get_memory_begin_page(t_zone *zone, size_t size,
+		size_t nb_page)
 {
 	t_mem	*previous_packet;
 	t_mem	*current_packet;

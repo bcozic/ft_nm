@@ -18,7 +18,8 @@ static void		add_used_packet(t_zone *zone, t_mem *packet)
 	zone->used_packet = packet;
 }
 
-void	*get_memory(t_zone *zone, t_mem *previous, t_mem *packet, size_t size)
+void			*get_memory(t_zone *zone, t_mem *previous, t_mem *packet,
+		size_t size)
 {
 	if (packet->size > size)
 		if (!(cut_end_packet(packet, size)))

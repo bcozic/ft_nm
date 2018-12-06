@@ -28,7 +28,7 @@ static int			ret_free(void *ptr)
 		return (0);
 }
 
-void			*ft_reallocf(void *ptr, size_t size)
+void				*ft_reallocf(void *ptr, size_t size)
 {
 	t_mem	*packet;
 	size_t	original_size;
