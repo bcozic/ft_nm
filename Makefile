@@ -6,7 +6,7 @@
 #    By: bcozic <bcozic@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/03/19 12:22:35 by barbara           #+#    #+#              #
-#    Updated: 2018/12/06 14:43:03 by bcozic           ###   ########.fr        #
+#    Updated: 2018/12/07 10:01:55 by bcozic           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,8 @@ RED=\x1b[31;01m
 
 CFLAGS = -Wall -Wextra -Werror -Weverything -g
 
-SRC = main.c get_stat.c ft_nm.c
+SRC = main.c get_stat.c ft_nm.c get_symbols.c\
+	  handle.c
 
 OBJ = $(addprefix obj/, $(SRC:.c=.o))
 

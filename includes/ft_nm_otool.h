@@ -6,7 +6,7 @@
 /*   By: bcozic <bcozic@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/06 13:06:01 by bcozic            #+#    #+#             */
-/*   Updated: 2018/12/06 14:46:51 by bcozic           ###   ########.fr       */
+/*   Updated: 2018/12/07 10:01:28 by bcozic           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,8 @@
 
 void	get_stat(int fd, void (*f)(void * ptr));
 void	ft_nm(void* ptr);
+void	handle_64(void *ptr);
+void	handle_32(void *ptr);
+void	get_symbols(struct symtab_command *sym, void* ptr);
 
 #endif
