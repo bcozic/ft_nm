@@ -1,17 +1,15 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_add_arg.c                                       :+:      :+:    :+:   */
+/*   add_arg.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bcozic <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: bcozic <bcozic@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/23 02:03:27 by bcozic            #+#    #+#             */
-/*   Updated: 2017/12/09 11:44:43 by bcozic           ###   ########.fr       */
+/*   Updated: 2018/12/07 08:47:03 by bcozic           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdarg.h>
-#include <stdlib.h>
 #include "libft.h"
 #include "ft_printf_data.h"
 
@@ -36,7 +34,7 @@ int		send_flag(va_list va, char *flag, char *buffer, int *nb)
 		if (flag['s'] || flag['%'])
 			nb[1] = -1;
 		len += add_string(buffer, str, nb, flag);
-		free(str);
+		ft_free(str);
 	}
 	return (len);
 }
@@ -60,7 +58,7 @@ char	*conv_arg(va_list va, char *f, int *nb)
 		str = ft_strdup("%");
 	else if (f[0])
 	{
-		if (!(str = malloc(sizeof(char) * 2)))
+		if (!(str = ft_malloc(sizeof(char) * 2)))
 			return (0);
 		str[0] = f[0];
 		str[1] = '\0';

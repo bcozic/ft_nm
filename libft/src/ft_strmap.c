@@ -3,14 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bcozic <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: bcozic <bcozic@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/10 17:12:08 by bcozic            #+#    #+#             */
-/*   Updated: 2017/11/12 17:38:31 by bcozic           ###   ########.fr       */
+/*   Updated: 2018/12/07 08:46:36 by bcozic           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include "libft.h"
 
 char	*ft_strmap(char const *s, char (*f)(char))
@@ -20,7 +19,7 @@ char	*ft_strmap(char const *s, char (*f)(char))
 
 	if (!s || !f)
 		return (0);
-	if (!(rt_str = (char *)malloc(ft_strlen(s) + 1)))
+	if (!(rt_str = ft_malloc(ft_strlen(s) + 1)))
 		return (0);
 	i = -1;
 	while (s[++i])

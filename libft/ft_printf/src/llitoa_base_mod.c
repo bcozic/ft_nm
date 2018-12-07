@@ -1,16 +1,15 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_llitoa_base_mod.c                               :+:      :+:    :+:   */
+/*   llitoa_base_mod.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bcozic <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: bcozic <bcozic@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/24 02:22:45 by bcozic            #+#    #+#             */
-/*   Updated: 2017/12/09 11:47:43 by bcozic           ###   ########.fr       */
+/*   Updated: 2018/12/07 08:45:06 by bcozic           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include "libft.h"
 #include "ft_printf_data.h"
 
@@ -50,7 +49,7 @@ static char	*len_nb(long long n, int base, int *size)
 		*size = *size + 1;
 		n /= base;
 	}
-	if (!(str = (char *)malloc(sizeof(char) * (unsigned long)(*size + 1))))
+	if (!(str = (char *)ft_malloc(sizeof(char) * (unsigned long)(*size + 1))))
 		return (0);
 	return (str);
 }

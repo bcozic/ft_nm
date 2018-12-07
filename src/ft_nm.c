@@ -6,7 +6,7 @@
 /*   By: bcozic <bcozic@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/06 13:38:51 by bcozic            #+#    #+#             */
-/*   Updated: 2018/12/06 14:54:24 by bcozic           ###   ########.fr       */
+/*   Updated: 2018/12/07 08:30:00 by bcozic           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ static void	print_output(uint32_t nsym, uint32_t symoff, uint32_t stroff, void* 
 	i = 0;
 	while (i++ < nsym)
 	{
-		;
-		// ft_printf("%s\n", stringtable + array[i].n_un.n_strx);
+		// ;
+		ft_printf("%s\n", stringtable + array[i].n_un.n_strx);
 	}
 }
 

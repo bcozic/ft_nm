@@ -6,11 +6,10 @@
 /*   By: bcozic <bcozic@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/11 13:10:30 by bcozic            #+#    #+#             */
-/*   Updated: 2018/04/15 14:11:58 by bcozic           ###   ########.fr       */
+/*   Updated: 2018/12/07 08:46:11 by bcozic           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include "libft.h"
 
 static void	w_in_str(char *str, int size, int neg, int n)
@@ -35,7 +34,7 @@ char		*ft_itoa(int n)
 	cpy = n;
 	neg = (n < 0) ? -1 : 1;
 	size = ft_nbrlen(n);
-	if (!(str = (char *)malloc(sizeof(char) * (size_t)(size + 1))))
+	if (!(str = (char *)ft_malloc(sizeof(char) * (size_t)(size + 1))))
 		return (0);
 	w_in_str(str, size, neg, n);
 	return (str);

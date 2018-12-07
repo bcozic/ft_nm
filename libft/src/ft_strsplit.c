@@ -3,14 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strsplit.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bcozic <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: bcozic <bcozic@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/11 11:19:44 by bcozic            #+#    #+#             */
-/*   Updated: 2018/01/30 09:59:02 by bcozic           ###   ########.fr       */
+/*   Updated: 2018/12/07 08:45:35 by bcozic           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include "libft.h"
 
 static void	w_in_split(char **split, char const *s, char c, int w)
@@ -30,7 +29,7 @@ static void	w_in_split(char **split, char const *s, char c, int w)
 			j = i;
 			while (s[++j] && s[j] != c)
 				size_w++;
-			if (!(split[++w] = (char *)malloc(sizeof(char) * size_w)))
+			if (!(split[++w] = ft_malloc(sizeof(char) * size_w)))
 				return ;
 			size_w = 0;
 			while (++i < j)
@@ -54,7 +53,7 @@ char		**ft_strsplit(char const *s, char c)
 	while (s[++i])
 		if ((s[i] == c && s[i + 1] != c && s[i + 1]) || (w == 1 && s[i] != c))
 			w++;
-	if (!(split = (char **)malloc(sizeof(char *) * (size_t)w)))
+	if (!(split = ft_malloc(sizeof(char *) * (size_t)w)))
 		return (0);
 	split[w - 1] = 0;
 	w_in_split(split, s, c, -1);

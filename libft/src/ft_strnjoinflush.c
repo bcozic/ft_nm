@@ -3,14 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strnjoinflush.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bcozic <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: bcozic <bcozic@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/16 21:03:29 by bcozic            #+#    #+#             */
-/*   Updated: 2018/01/09 20:33:43 by bcozic           ###   ########.fr       */
+/*   Updated: 2018/12/07 08:47:32 by bcozic           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include "libft.h"
 
 char	*ft_strnjoinflush(char **s1, char const *s2, size_t len)
@@ -27,13 +26,13 @@ char	*ft_strnjoinflush(char **s1, char const *s2, size_t len)
 		size += ft_strlen(s2);
 	else
 		size += len;
-	if (!(str = (char *)malloc(sizeof(char) * size)))
+	if (!(str = ft_malloc(sizeof(char) * size)))
 		return (0);
 	str[0] = '\0';
 	if (*s1)
 	{
 		ft_strncpy(str, *s1, len);
-		free(*s1);
+		ft_free(*s1);
 	}
 	ft_strncat(str, s2, len);
 	*s1 = str;
