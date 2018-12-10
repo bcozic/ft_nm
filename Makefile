@@ -6,7 +6,7 @@
 #    By: bcozic <bcozic@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/03/19 12:22:35 by barbara           #+#    #+#              #
-#    Updated: 2018/12/10 12:31:02 by bcozic           ###   ########.fr        #
+#    Updated: 2018/12/10 15:42:51 by bcozic           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,11 +20,12 @@ RED=\x1b[31;01m
 
 CFLAGS = -Wall -Wextra -Werror -Weverything -g
 
-SRC = main.c add_new_segment.c fat_header.c free_all.c\
-	  free_list_sym.c free_section.c ft_nm.c get_endianness.c\
-	  get_section.c get_stat.c get_symbols.c get_type.c\
-	  handle.c insert_by_name_32.c insert_by_name_64.c insert_sym_list.c\
-	  little_endian.c
+SRC = main.c add_segment.c fat_header.c free_all.c\
+	  free_list_sym.c free_section.c ft_nm.c get_section.c\
+	  get_stat.c get_symbols.c get_type.c handle.c\
+	  insert_by_name_little_32.c insert_by_name_little_64.c\
+	  insert_by_name_big_32.c insert_by_name_big_64.c\
+	  insert_sym_list.c little_endian.c
 
 OBJ = $(addprefix obj/, $(SRC:.c=.o))
 

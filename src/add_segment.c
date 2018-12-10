@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   add_new_segment.c                                  :+:      :+:    :+:   */
+/*   add_segment.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bcozic <bcozic@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/09 14:04:03 by bcozic            #+#    #+#             */
+/*   Created: 2018/12/10 14:12:26 by bcozic            #+#    #+#             */
 /*   Updated: 2018/12/10 14:29:29 by bcozic           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_nm_otool.h"
 
-void	add_new_segment_little_64(struct segment_command_64 *segment,
+void	add_segment_little_64(struct segment_command_64 *segment,
 		t_data_64 *data)
 {
 	t_section_64	*section;
@@ -42,7 +42,7 @@ void	add_new_segment_little_64(struct segment_command_64 *segment,
 	}
 }
 
-void	add_new_segment_little_32(struct segment_command *segment,
+void	add_segment_little_32(struct segment_command *segment,
 		t_data_32 *data)
 {
 	t_section_32	*section;
@@ -72,7 +72,7 @@ void	add_new_segment_little_32(struct segment_command *segment,
 	}
 }
 
-void	add_new_segment_big_64(struct segment_command_64 *segment, t_data_64 *data)
+void	add_segment_big_64(struct segment_command_64 *segment, t_data_64 *data)
 {
 	t_section_64	*section;
 	t_section_64	*current;
@@ -101,7 +101,7 @@ void	add_new_segment_big_64(struct segment_command_64 *segment, t_data_64 *data)
 	}
 }
 
-void	add_new_segment_big_32(struct segment_command *segment, t_data_32 *data)
+void	add_segment_big_32(struct segment_command *segment, t_data_32 *data)
 {
 	t_section_32	*section;
 	t_section_32	*current;

@@ -6,16 +6,34 @@
 /*   By: bcozic <bcozic@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/10 11:42:53 by bcozic            #+#    #+#             */
-/*   Updated: 2018/12/10 11:55:52 by bcozic           ###   ########.fr       */
+/*   Updated: 2018/12/10 14:29:05 by bcozic           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_nm_otool.h"
 
-uint32_t	little_endian_32(uint32_t nbr)
+uint64_t	lte_64(uint64_t nbr)
+{
+	return (((nbr & 0x00000000000000FF) << 56)
+			| ((nbr & 0x000000000000FF00) << 40)
+			| ((nbr & 0x0000000000FF0000) << 24)
+			| ((nbr & 0x00000000FF000000) << 8)
+			| ((nbr & 0x000000FF00000000) >> 8)
+			| ((nbr & 0x0000FF0000000000) >> 24)
+			| ((nbr & 0x00FF000000000000) >> 40)
+			| ((nbr & 0xFF00000000000000) >> 56));
+}
+
+uint32_t	lte_32(uint32_t nbr)
 {
 	return (((nbr & 0x000000FF) << 24)
 			| ((nbr & 0x0000FF00) << 8)
 			| ((nbr & 0x00FF0000) >> 8)
 			| ((nbr & 0xFF000000) >> 24));
+}
+
+uint16_t	lte_16(uint16_t nbr)
+{
+	return ((uint16_t)(int)((nbr & 0x00FF) << 8)
+			| ((nbr & 0xFF00) >> 8));
 }

@@ -6,7 +6,7 @@
 /*   By: bcozic <bcozic@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/06 13:38:51 by bcozic            #+#    #+#             */
-/*   Updated: 2018/12/10 12:12:05 by bcozic           ###   ########.fr       */
+/*   Updated: 2018/12/10 16:17:33 by bcozic           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,30 +29,22 @@
 void	ft_nm(void *ptr)
 {
 	uint32_t			magic_nbr;
-	t_data_64			*data_64;
-	t_data_32			*data_32;
-	int					endianness;
 
 	magic_nbr = *(uint32_t*)ptr;
-	endianness = get_endianness(magic_nbr);
-	if (endianness == IS_BIG_ENDIAN)
-		magic_nbr = little_endian_32(magic_nbr);
 	if (magic_nbr == FAT_MAGIC_64)
-		fat_header_64(ptr, endianness);
+		fat_header_little_64(ptr);
+	else if (magic_nbr == FAT_CIGAM_64)
+		fat_header_big_64(ptr);
 	else if (magic_nbr == FAT_MAGIC)
-		fat_header_32(ptr, endianness);
+		fat_header_little_32(ptr);
+	else if (magic_nbr == FAT_CIGAM)
+		fat_header_big_32(ptr);
 	else if (magic_nbr == MH_MAGIC_64)
-	{
-		data_64 = ft_calloc(sizeof(t_data_64), 1);
-		data_64->ptr = ptr;
-		handle_64(data_64, endianness);
-		free_all_64(data_64);
-	}
+		handle_little_64(ptr);
+	else if (magic_nbr == MH_CIGAM_64)
+		handle_big_64(ptr);
 	else if (magic_nbr == MH_MAGIC)
-	{
-		data_32 = ft_calloc(sizeof(t_data_32), 1);
-		data_32->ptr = ptr;
-		handle_32(data_32, endianness);
-		free_all_32(data_32);
-	}
+		handle_little_32(ptr);
+	else if (magic_nbr == MH_CIGAM)
+		handle_big_32(ptr);
 }

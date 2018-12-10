@@ -6,7 +6,7 @@
 /*   By: bcozic <bcozic@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/06 13:38:44 by bcozic            #+#    #+#             */
-/*   Updated: 2018/12/10 10:43:44 by bcozic           ###   ########.fr       */
+/*   Updated: 2018/12/10 16:10:02 by bcozic           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,18 +21,18 @@ void	get_stat(int fd)
 
 	if (fstat(fd, &buf) < 0)
 	{
-		ft_printf("fstat Failure\n");
+		write(2, "fstat Failure\n", 14);
 		return ;
 	}
 	if ((ptr = mmap(0, (size_t)buf.st_size, PROT_READ, MAP_PRIVATE, fd, 0)) == MAP_FAILED)
 	{
-		ft_printf("mmap Failure\n");
+		write(2, "mmap Failure\n", 13);
 		return ;
 	}
 	ft_nm((void*)ptr);
 	if ((munmap(ptr, (size_t)buf.st_size)) < 0)
 	{
-		ft_printf("munmap Failure\n");
+		write(2, "munmap Failure\n", 15);
 		return ;
 	}
 }
