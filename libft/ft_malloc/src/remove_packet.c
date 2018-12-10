@@ -6,11 +6,11 @@
 /*   By: bcozic <bcozic@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/21 10:45:04 by bcozic            #+#    #+#             */
-/*   Updated: 2018/11/21 10:54:42 by bcozic           ###   ########.fr       */
+/*   Updated: 2018/12/08 11:32:11 by bcozic           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_libc.h"
+#include "ft_libmalloc.h"
 
 static void	remove_packet(t_zone *zone, t_mem *packet, t_mem *prec)
 {

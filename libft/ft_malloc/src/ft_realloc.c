@@ -6,11 +6,11 @@
 /*   By: bcozic <bcozic@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/16 22:01:28 by bcozic            #+#    #+#             */
-/*   Updated: 2018/11/21 10:59:25 by bcozic           ###   ########.fr       */
+/*   Updated: 2018/12/08 11:32:11 by bcozic           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_libc.h"
+#include "ft_libmalloc.h"
 
 static int		join_packet(t_mem *packet, t_mem *current,
 		t_mem *prec, t_zone *zone)

@@ -6,11 +6,11 @@
 /*   By: bcozic <bcozic@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/21 11:00:00 by bcozic            #+#    #+#             */
-/*   Updated: 2018/11/21 11:00:22 by bcozic           ###   ########.fr       */
+/*   Updated: 2018/12/08 11:32:11 by bcozic           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_libc.h"
+#include "ft_libmalloc.h"
 
 t_mem	*get_new_page(t_zone *zone, size_t nb_pages)
 {

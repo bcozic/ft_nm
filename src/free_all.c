@@ -1,27 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cut_end_packet.c                                   :+:      :+:    :+:   */
+/*   free_all.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bcozic <bcozic@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/21 10:48:27 by bcozic            #+#    #+#             */
-/*   Updated: 2018/12/08 11:32:16 by bcozic           ###   ########.fr       */
+/*   Created: 2018/12/09 16:58:16 by bcozic            #+#    #+#             */
+/*   Updated: 2018/12/10 12:26:39 by bcozic           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_libmalloc.h"
+#include "ft_nm_otool.h"
 
-int			cut_end_packet(t_mem *packet, size_t size)
+void	free_all_64(t_data_64 *data)
 {
-	t_mem	*new_packet;
+	free_list_sym_64(data->list_sym);
+	free_section_64(data->section);	
+	ft_free(data);
+}
 
-	if (!(new_packet = (t_mem*)get_new_struct(sizeof(t_mem))))
-		return (0);
-	new_packet->next = packet->next;
-	packet->next = new_packet;
-	new_packet->ptr = (char*)packet->ptr + size;
-	new_packet->size = packet->size - size;
-	packet->size = size;
-	return (1);
+void	free_all_32(t_data_32 *data)
+{
+	free_list_sym_32(data->list_sym);
+	free_section_32(data->section);	
+	ft_free(data);
 }

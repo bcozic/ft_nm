@@ -6,7 +6,7 @@
 /*   By: bcozic <bcozic@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/06 12:35:11 by bcozic            #+#    #+#             */
-/*   Updated: 2018/12/06 14:46:35 by bcozic           ###   ########.fr       */
+/*   Updated: 2018/12/10 10:52:26 by bcozic           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	main(int ac, char **av)
 			ft_printf("a.out: No such file or directory.\n");
 			return (0);
 		}
-		get_stat(fd, &ft_nm);
+		get_stat(fd);
 		close(fd);
 	}
 	while (++i < ac)
@@ -36,7 +36,7 @@ int	main(int ac, char **av)
 			ft_printf("%s: No such file or directory.\n", av[1]);
 			return (0);
 		}
-		get_stat(fd, &ft_nm);
+		get_stat(fd);
 		close(fd);
 	}
 	return (0);

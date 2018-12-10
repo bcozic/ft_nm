@@ -6,11 +6,11 @@
 /*   By: bcozic <bcozic@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/21 11:02:40 by bcozic            #+#    #+#             */
-/*   Updated: 2018/11/21 11:02:50 by bcozic           ###   ########.fr       */
+/*   Updated: 2018/12/08 11:32:11 by bcozic           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_libc.h"
+#include "ft_libmalloc.h"
 
 static void		add_used_packet(t_zone *zone, t_mem *packet)
 {

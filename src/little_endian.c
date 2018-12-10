@@ -1,27 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cut_end_packet.c                                   :+:      :+:    :+:   */
+/*   little_endian.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bcozic <bcozic@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/21 10:48:27 by bcozic            #+#    #+#             */
-/*   Updated: 2018/12/08 11:32:16 by bcozic           ###   ########.fr       */
+/*   Created: 2018/12/10 11:42:53 by bcozic            #+#    #+#             */
+/*   Updated: 2018/12/10 11:55:52 by bcozic           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_libmalloc.h"
+#include "ft_nm_otool.h"
 
-int			cut_end_packet(t_mem *packet, size_t size)
+uint32_t	little_endian_32(uint32_t nbr)
 {
-	t_mem	*new_packet;
-
-	if (!(new_packet = (t_mem*)get_new_struct(sizeof(t_mem))))
-		return (0);
-	new_packet->next = packet->next;
-	packet->next = new_packet;
-	new_packet->ptr = (char*)packet->ptr + size;
-	new_packet->size = packet->size - size;
-	packet->size = size;
-	return (1);
+	return (((nbr & 0x000000FF) << 24)
+			| ((nbr & 0x0000FF00) << 8)
+			| ((nbr & 0x00FF0000) >> 8)
+			| ((nbr & 0xFF000000) >> 24));
 }

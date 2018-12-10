@@ -6,11 +6,11 @@
 /*   By: bcozic <bcozic@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/21 10:57:12 by bcozic            #+#    #+#             */
-/*   Updated: 2018/11/21 10:57:41 by bcozic           ###   ########.fr       */
+/*   Updated: 2018/12/08 11:32:11 by bcozic           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_libc.h"
+#include "ft_libmalloc.h"
 
 t_data			*g_data = NULL;
 pthread_mutex_t	g_mutex = PTHREAD_MUTEX_INITIALIZER;

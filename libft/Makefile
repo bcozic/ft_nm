@@ -6,13 +6,13 @@
 #    By: bcozic <bcozic@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/07 18:10:54 by bcozic            #+#    #+#              #
-#    Updated: 2018/12/03 07:24:43 by bcozic           ###   ########.fr        #
+#    Updated: 2018/12/08 08:37:39 by bcozic           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libft.a
 
-CFLAGS = -Wall -Wextra -Werror -Weverything -g
+CFLAGS = -Wall -Wextra -Werror -Weverything
 
 NO_COLOR=\x1b[0m
 

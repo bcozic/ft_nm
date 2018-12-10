@@ -1,27 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cut_end_packet.c                                   :+:      :+:    :+:   */
+/*   free_list_sym.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bcozic <bcozic@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/21 10:48:27 by bcozic            #+#    #+#             */
-/*   Updated: 2018/12/08 11:32:16 by bcozic           ###   ########.fr       */
+/*   Created: 2018/12/10 12:06:09 by bcozic            #+#    #+#             */
+/*   Updated: 2018/12/10 12:27:46 by bcozic           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_libmalloc.h"
+#include "ft_nm_otool.h"
 
-int			cut_end_packet(t_mem *packet, size_t size)
+void	free_list_sym_64(t_list_sym_64 *list_sym)
 {
-	t_mem	*new_packet;
+	if (!list_sym)
+		return ;
+	free_list_sym_64(list_sym->next);
+	ft_free(list_sym);
+}
 
-	if (!(new_packet = (t_mem*)get_new_struct(sizeof(t_mem))))
-		return (0);
-	new_packet->next = packet->next;
-	packet->next = new_packet;
-	new_packet->ptr = (char*)packet->ptr + size;
-	new_packet->size = packet->size - size;
-	packet->size = size;
-	return (1);
+void	free_list_sym_32(t_list_sym_32 *list_sym)
+{
+	if (!list_sym)
+		return ;
+	free_list_sym_32(list_sym->next);
+	ft_free(list_sym);
 }

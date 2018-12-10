@@ -6,7 +6,7 @@
 #    By: bcozic <bcozic@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/07 18:10:54 by bcozic            #+#    #+#              #
-#    Updated: 2018/11/16 16:57:25 by bcozic           ###   ########.fr        #
+#    Updated: 2018/12/08 08:37:45 by bcozic           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ GREEN = \x1b[32;01m
 
 RED = \x1b[31;01m
 
-CFLAGS = -Wall -Wextra -Werror -Weverything -g
+CFLAGS = -Wall -Wextra -Werror -Weverything
 
 SRC = ft_printf.c chrflags.c add_arg.c apply_flag.c\
 	  convert_nb.c flag_cara.c llitoa_base_mod.c ullitoa_base_mod.c\

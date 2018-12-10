@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_libc.h                                          :+:      :+:    :+:   */
+/*   ft_libmalloc.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bcozic <bcozic@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/02 22:37:53 by bcozic            #+#    #+#             */
-/*   Updated: 2018/11/21 11:01:03 by bcozic           ###   ########.fr       */
+/*   Updated: 2018/12/08 11:31:19 by bcozic           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_LIBC_H
-# define FT_LIBC_H
+#ifndef FT_LIBMALLOC_H
+# define FT_LIBMALLOC_H
 
 # include "libft.h"
 # include <unistd.h>

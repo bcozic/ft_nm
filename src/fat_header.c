@@ -1,27 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cut_end_packet.c                                   :+:      :+:    :+:   */
+/*   fat_header.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bcozic <bcozic@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/21 10:48:27 by bcozic            #+#    #+#             */
-/*   Updated: 2018/12/08 11:32:16 by bcozic           ###   ########.fr       */
+/*   Created: 2018/12/10 11:57:00 by bcozic            #+#    #+#             */
+/*   Updated: 2018/12/10 12:26:00 by bcozic           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_libmalloc.h"
+#include "ft_nm_otool.h"
 
-int			cut_end_packet(t_mem *packet, size_t size)
+void	fat_header_64(void *ptr, int endianness)
 {
-	t_mem	*new_packet;
+	(void)ptr;
+	(void)endianness;
+}
 
-	if (!(new_packet = (t_mem*)get_new_struct(sizeof(t_mem))))
-		return (0);
-	new_packet->next = packet->next;
-	packet->next = new_packet;
-	new_packet->ptr = (char*)packet->ptr + size;
-	new_packet->size = packet->size - size;
-	packet->size = size;
-	return (1);
+void	fat_header_32(void *ptr, int endianness)
+{
+	(void)ptr;
+	(void)endianness;
 }

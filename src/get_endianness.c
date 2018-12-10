@@ -1,27 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cut_end_packet.c                                   :+:      :+:    :+:   */
+/*   get_endianness.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bcozic <bcozic@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/21 10:48:27 by bcozic            #+#    #+#             */
-/*   Updated: 2018/12/08 11:32:16 by bcozic           ###   ########.fr       */
+/*   Created: 2018/12/10 11:41:14 by bcozic            #+#    #+#             */
+/*   Updated: 2018/12/10 11:51:11 by bcozic           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_libmalloc.h"
+#include "ft_nm_otool.h"
 
-int			cut_end_packet(t_mem *packet, size_t size)
+int	get_endianness(uint32_t magic_nbr)
 {
-	t_mem	*new_packet;
-
-	if (!(new_packet = (t_mem*)get_new_struct(sizeof(t_mem))))
-		return (0);
-	new_packet->next = packet->next;
-	packet->next = new_packet;
-	new_packet->ptr = (char*)packet->ptr + size;
-	new_packet->size = packet->size - size;
-	packet->size = size;
-	return (1);
+	if (magic_nbr == FAT_CIGAM || magic_nbr == FAT_CIGAM_64
+			|| magic_nbr == MH_CIGAM_64 || magic_nbr == MH_CIGAM)
+		return (IS_BIG_ENDIAN);
+	return (IS_LITTLE_ENDIAN);
 }

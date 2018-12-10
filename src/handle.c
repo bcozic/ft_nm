@@ -6,56 +6,48 @@
 /*   By: bcozic <bcozic@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/07 09:56:17 by bcozic            #+#    #+#             */
-/*   Updated: 2018/12/07 09:59:34 by bcozic           ###   ########.fr       */
+/*   Updated: 2018/12/10 12:28:16 by bcozic           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_nm_otool.h"
 
-void	handle_64(void *ptr)
+void	handle_64(t_data_64 *data, int endianness)
 {
-	uint32_t				nb_cmds;
-	struct mach_header_64	*header;
-	struct load_command		*lc;
-	struct symtab_command	*sym;
-	uint32_t				i;
+	struct load_command	*lc;
+	uint32_t			i;
 
-	header = (struct mach_header_64*)ptr;
-	nb_cmds = header->ncmds;
-	lc = (void*)((size_t)ptr + sizeof(struct mach_header_64));
+	data->header = (struct mach_header_64*)data->ptr;
+	data->endianness = endianness;
+	lc = (void*)((size_t)data->ptr + sizeof(struct mach_header_64));
 	i = 0;
-	while (i++ < nb_cmds)
+	while (i++ < data->header->ncmds)
 	{
 		if (lc->cmd == LC_SYMTAB)
-		{
-			sym = (struct symtab_command*)lc;
-			get_symbols(sym, ptr);
-			break;
-		}
+			data->symtab = (struct symtab_command*)lc;
+		else if (lc->cmd == LC_SEGMENT_64)
+			add_new_segment_64((struct segment_command_64*)((void*)lc), data);
 		lc = (void*)((size_t)lc + lc->cmdsize);
 	}
+	get_symbols_64(data);
 }
 
-void	handle_32(void *ptr)
+void	handle_32(t_data_32 *data, int endianness)
 {
-	uint32_t				nb_cmds;
-	struct mach_header	*header;
-	struct load_command		*lc;
-	struct symtab_command	*sym;
-	uint32_t				i;
+	struct load_command	*lc;
+	uint32_t			i;
 
-	header = (struct mach_header*)ptr;
-	nb_cmds = header->ncmds;
-	lc = (void*)((size_t)ptr + sizeof(struct mach_header));
+	data->header = (struct mach_header*)data->ptr;
+	data->endianness = endianness;
+	lc = (void*)((size_t)data->ptr + sizeof(struct mach_header));
 	i = 0;
-	while (i++ < nb_cmds)
+	while (i++ < data->header->ncmds)
 	{
 		if (lc->cmd == LC_SYMTAB)
-		{
-			sym = (struct symtab_command*)lc;
-			get_symbols(sym, ptr);
-			break;
-		}
+			data->symtab = (struct symtab_command*)lc;
+		else if (lc->cmd == LC_SEGMENT)
+			add_new_segment_32((struct segment_command*)((void*)lc), data);
 		lc = (void*)((size_t)lc + lc->cmdsize);
 	}
+	get_symbols_32(data);
 }

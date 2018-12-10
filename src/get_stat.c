@@ -6,7 +6,7 @@
 /*   By: bcozic <bcozic@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/06 13:38:44 by bcozic            #+#    #+#             */
-/*   Updated: 2018/12/06 14:46:48 by bcozic           ###   ########.fr       */
+/*   Updated: 2018/12/10 10:43:44 by bcozic           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <sys/stat.h>
 #include "ft_nm_otool.h"
 
-void	get_stat(int fd, void (*f)(void*))
+void	get_stat(int fd)
 {
 	struct stat	buf;
 	char		*ptr;
@@ -29,7 +29,7 @@ void	get_stat(int fd, void (*f)(void*))
 		ft_printf("mmap Failure\n");
 		return ;
 	}
-	f((void*)ptr);
+	ft_nm((void*)ptr);
 	if ((munmap(ptr, (size_t)buf.st_size)) < 0)
 	{
 		ft_printf("munmap Failure\n");

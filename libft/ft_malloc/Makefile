@@ -6,11 +6,11 @@
 #    By: bcozic <bcozic@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/07 18:10:54 by bcozic            #+#    #+#              #
-#    Updated: 2018/11/21 11:05:55 by bcozic           ###   ########.fr        #
+#    Updated: 2018/12/08 11:31:45 by bcozic           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CFLAGS = -Wall -Wextra -Werror -Weverything -g
+CFLAGS = -Wall -Wextra -Werror -Weverything
 
 NO_COLOR=\x1b[0m
 
@@ -24,7 +24,7 @@ SRC = ft_malloc.c ft_valloc.c ft_calloc.c ft_free.c\
 	  init_data.c insert_new_element.c remove_packet.c remove_struct.c\
 	  unmap_at_exit.c
 
-INCLUDE = ../includes/ft_libc.h\
+INCLUDE = ../includes/ft_libmalloc.h\
 		  ../includes/libft.h
 
 OBJ = $(addprefix obj/, $(SRC:.c=.o))
