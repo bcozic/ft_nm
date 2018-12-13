@@ -6,7 +6,7 @@
 /*   By: bcozic <bcozic@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/06 13:38:51 by bcozic            #+#    #+#             */
-/*   Updated: 2018/12/13 12:42:07 by bcozic           ###   ########.fr       */
+/*   Updated: 2018/12/13 17:59:57 by bcozic           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,8 @@ int	ft_nm(void *ptr, t_data *data)
 	}
 	else if (magic_nbr == FAT_CIGAM)
 	{
-		ft_printf("FAT_CIGAM\n");
-		// fat_header_big_32(ptr, data);
+		// ft_printf("FAT_CIGAM\n");
+		fat_header_big_32(ptr, data);
 	}
 	else if (magic_nbr == MH_MAGIC_64)
 		handle_little_64(ptr, data);
@@ -53,8 +53,8 @@ int	ft_nm(void *ptr, t_data *data)
 		handle_little_32(ptr, data);
 	else if (magic_nbr == MH_CIGAM)
 	{
-		ft_printf("MH_CIGAM\n");
-		// handle_big_32(ptr, data);
+		// ft_printf("MH_CIGAM\n");
+		handle_big_32(ptr, data);
 	}
 	else if ((size_t)ptr + SARMAG < data->end_file && !ft_memcmp(ARMAG, ptr, SARMAG))
 		handle_ar(data, (char*)ptr + SARMAG);

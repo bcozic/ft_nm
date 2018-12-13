@@ -6,7 +6,7 @@
 /*   By: bcozic <bcozic@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/08 13:56:30 by bcozic            #+#    #+#             */
-/*   Updated: 2018/12/13 12:39:23 by bcozic           ###   ########.fr       */
+/*   Updated: 2018/12/13 17:38:46 by bcozic           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,12 @@ char	get_type_64(uint8_t type, uint8_t n_sect, uint64_t value, t_arch_64 *arch)
 		else
 			char_type = 's';
 	}
-	else if ((type & N_TYPE) == N_UNDF && value && (type & N_EXT) && n_sect == NO_SECT)
+	else if ((type & N_TYPE) == N_UNDF && value && (type & N_EXT))
 		char_type = 'C';
-	else if ((type & N_TYPE) == N_UNDF && n_sect == NO_SECT)
+	else if ((type & N_TYPE) == N_UNDF)
 		char_type = 'U';
+	else if ((type & N_INDR))
+		char_type = 'I';
 	if (type & N_EXT)
 		char_type = (char)ft_toupper((int)char_type);
 	return (char_type);

@@ -6,7 +6,7 @@
 /*   By: bcozic <bcozic@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/06 13:06:01 by bcozic            #+#    #+#             */
-/*   Updated: 2018/12/13 13:49:08 by bcozic           ###   ########.fr       */
+/*   Updated: 2018/12/13 17:54:43 by bcozic           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,4 +123,5 @@ void				fat_header_big_32(void *ptr, t_data *data);
 void				handle_ar(t_data *data, void *offset);
 void				get_header_64(t_data *data, void *offset);
 void				get_header_32(t_data *data, void *offset);
+void				print_architecture(uint32_t arch, t_data *data);
 #endif

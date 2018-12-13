@@ -6,7 +6,7 @@
 /*   By: bcozic <bcozic@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/10 15:43:16 by bcozic            #+#    #+#             */
-/*   Updated: 2018/12/13 12:39:45 by bcozic           ###   ########.fr       */
+/*   Updated: 2018/12/13 18:02:06 by bcozic           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ static void	check_duplicate_first(t_list_sym_32 *current, t_arch_32 *arch)
 {
 	t_list_sym_32	*to_delete;
 
-	if (ft_strcmp((arch->stringtable + current->symbol->n_un.n_strx),
-			arch->stringtable + current->next->symbol->n_un.n_strx))
+	if (ft_strcmp((arch->stringtable + lte_32(current->symbol->n_un.n_strx)),
+			arch->stringtable + lte_32(current->next->symbol->n_un.n_strx)))
 		return ;
 	if (current->symbol->n_value == current->next->symbol->n_value)
 	{
@@ -52,8 +52,8 @@ static void	check_duplicate_first(t_list_sym_32 *current, t_arch_32 *arch)
 static void	check_duplicate(t_list_sym_32 *current, t_arch_32 *arch)
 {
 	if (!current->next->next || ft_strcmp((arch->stringtable
-			+ current->next->symbol->n_un.n_strx),
-			arch->stringtable + current->next->next->symbol->n_un.n_strx))
+			+ lte_32(current->next->symbol->n_un.n_strx)),
+			arch->stringtable + lte_32(current->next->next->symbol->n_un.n_strx)))
 		return ;
 	if (current->next->symbol->n_value
 			== current->next->next->symbol->n_value)
@@ -75,8 +75,8 @@ void		insert_by_name_big_32(t_list_sym_32 *new_elem, t_arch_32 *arch)
 	int				diff;
 
 	current = arch->list_sym;
-	if ((diff = ft_strcmp((arch->stringtable + new_elem->symbol->n_un.n_strx),
-			arch->stringtable + current->symbol->n_un.n_strx)) < 0
+	if ((diff = ft_strcmp((arch->stringtable + lte_32(new_elem->symbol->n_un.n_strx)),
+			arch->stringtable + lte_32(current->symbol->n_un.n_strx))) < 0
 			|| (!diff && new_elem->symbol->n_value < current->symbol->n_value))
 	{
 		new_elem->next = current;
@@ -85,12 +85,12 @@ void		insert_by_name_big_32(t_list_sym_32 *new_elem, t_arch_32 *arch)
 		return ;
 	}
 	while (current->next && ft_strcmp(arch->stringtable
-			+ new_elem->symbol->n_un.n_strx, arch->stringtable
-			+ current->next->symbol->n_un.n_strx) > 0)
+			+ lte_32(new_elem->symbol->n_un.n_strx), arch->stringtable
+			+ lte_32(current->next->symbol->n_un.n_strx)) > 0)
 		current = current->next;
 	while (current->next && !ft_strcmp(arch->stringtable
-			+ new_elem->symbol->n_un.n_strx, arch->stringtable
-			+ current->next->symbol->n_un.n_strx)
+			+ lte_32(new_elem->symbol->n_un.n_strx), arch->stringtable
+			+ lte_32(current->next->symbol->n_un.n_strx))
 			&& new_elem->symbol->n_value > current->next->symbol->n_value)
 		current = current->next;
 	new_elem->next = current->next;
