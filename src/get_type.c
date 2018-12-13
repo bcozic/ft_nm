@@ -6,24 +6,24 @@
 /*   By: bcozic <bcozic@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/08 13:56:30 by bcozic            #+#    #+#             */
-/*   Updated: 2018/12/10 12:29:15 by bcozic           ###   ########.fr       */
+/*   Updated: 2018/12/13 12:39:23 by bcozic           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_nm_otool.h"
 
-char	get_type_64(uint8_t type, uint8_t n_sect, uint64_t value, t_data_64 *data)
+char	get_type_64(uint8_t type, uint8_t n_sect, uint64_t value, t_arch_64 *arch)
 {
 	char				char_type;
 	struct section_64	*section;
 
-	section = get_section_64(n_sect, data->section);
+	section = get_section_64(n_sect, arch->section);
 	char_type = '?';
 	if ((type & N_TYPE) == N_ABS)
-		char_type = 'A';
+		char_type = 'a';
 	else if (section)
 	{
-		// ft_printf("%s %s\n", section->segname, section->sectname);
+		// ft_printf("%x %d %s %s\n", type, n_sect, section->segname, section->sectname);
 		if (!ft_strncmp("__DATA", section->segname, 16) && !ft_strncmp("__bss", section->sectname, 16))
 			char_type = 'b';
 		// else if (!ft_strncmp("__DATA", section->segname, 16) && !ft_strncmp("__common", section->sectname, 16))
@@ -44,12 +44,12 @@ char	get_type_64(uint8_t type, uint8_t n_sect, uint64_t value, t_data_64 *data)
 	return (char_type);
 }
 
-char	get_type_32(uint8_t type, uint8_t n_sect, uint64_t value, t_data_32 *data)
+char	get_type_32(uint8_t type, uint8_t n_sect, uint64_t value, t_arch_32 *arch)
 {
 	char				char_type;
 	struct section		*section;
 
-	section = get_section_32(n_sect, data->section);
+	section = get_section_32(n_sect, arch->section);
 	char_type = '?';
 	if ((type & N_TYPE) == N_ABS)
 		char_type = 'A';

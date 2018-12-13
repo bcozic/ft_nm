@@ -1,27 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_all.c                                         :+:      :+:    :+:   */
+/*   ft_libc.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bcozic <bcozic@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/09 16:58:16 by bcozic            #+#    #+#             */
-/*   Updated: 2018/12/13 14:05:41 by bcozic           ###   ########.fr       */
+/*   Created: 2018/12/13 13:41:57 by bcozic            #+#    #+#             */
+/*   Updated: 2018/12/13 13:42:38 by bcozic           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_nm_otool.h"
+#ifndef FT_LIBC_H
+# define FT_LIBC_H
 
-void	free_all_64(t_arch_64 *arch)
-{
-	free_list_sym_64(arch->list_sym);
-	free_section_64(arch->section);	
-	ft_bzero(arch, sizeof(t_arch_64));
-}
+void						*ft_malloc(size_t size);
+void						*ft_calloc(size_t count, size_t size);
+void						*ft_valloc(size_t size);
+void						ft_free(void *ptr);
+void						*ft_realloc(void *ptr, size_t size);
+void						*ft_reallocf(void *ptr, size_t size);
 
-void	free_all_32(t_arch_32 *arch)
-{
-	free_list_sym_32(arch->list_sym);
-	free_section_32(arch->section);
-	ft_bzero(arch, sizeof(t_arch_32));
-}
+#endif

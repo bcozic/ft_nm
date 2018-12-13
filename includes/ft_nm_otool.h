@@ -6,7 +6,7 @@
 /*   By: bcozic <bcozic@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/06 13:06:01 by bcozic            #+#    #+#             */
-/*   Updated: 2018/12/10 15:57:20 by bcozic           ###   ########.fr       */
+/*   Updated: 2018/12/13 13:49:08 by bcozic           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 # include <mach-o/loader.h>
 # include <mach-o/nlist.h>
 # include <mach-o/fat.h>
+# include <mach-o/ranlib.h>
+# include <ar.h>
 # include <sys/types.h>
 # include "libft.h"
 
@@ -43,9 +45,10 @@ typedef struct	s_section_32
 	struct s_section_32	*next;
 }				t_section_32;
 
-typedef struct	s_data_64
+typedef struct	s_arch_64
 {
 	void					*ptr;
+	size_t					end_file;
 	struct mach_header_64	*header;
 	struct symtab_command	*symtab;
 	t_list_sym_64			*list_sym;
@@ -53,11 +56,12 @@ typedef struct	s_data_64
 	t_section_64			*section;
 	int						endianness;
 	int		wait;
-}				t_data_64;
+}				t_arch_64;
 
-typedef struct	s_data_32
+typedef struct	s_arch_32
 {
 	void					*ptr;
+	size_t					end_file;
 	struct mach_header		*header;
 	struct symtab_command	*symtab;
 	t_list_sym_32			*list_sym;
@@ -65,36 +69,45 @@ typedef struct	s_data_32
 	t_section_32			*section;
 	int						endianness;
 	int		wait;
-}				t_data_32;
+}				t_arch_32;
 
-void				get_stat(int fd);
-void				ft_nm(void *ptr);
-void				handle_little_64(void *ptr);
-void				handle_little_32(void *ptr);
-void				handle_big_64(void *ptr);
-void				handle_big_32(void *ptr);
-void				get_symbols_little_64(t_data_64 *data);
-void				get_symbols_little_32(t_data_32 *data);
-void				get_symbols_big_64(t_data_64 *data);
-void				get_symbols_big_32(t_data_32 *data);
-int					insert_sym_list_little_64(struct nlist_64 *symbol, t_data_64 *data);
-int					insert_sym_list_little_32(struct nlist *symbol, t_data_32 *data);
-int					insert_sym_list_big_64(struct nlist_64 *symbol, t_data_64 *data);
-int					insert_sym_list_big_32(struct nlist *symbol, t_data_32 *data);
-void				insert_by_name_little_64(t_list_sym_64 *new_elem, t_data_64 *data);
-void				insert_by_name_little_32(t_list_sym_32 *new_elem, t_data_32 *data);
-void				insert_by_name_big_64(t_list_sym_64 *new_elem, t_data_64 *data);
-void				insert_by_name_big_32(t_list_sym_32 *new_elem, t_data_32 *data);
-void				add_segment_little_64(struct segment_command_64 *segment, t_data_64 *data);
-void				add_segment_little_32(struct segment_command *segment, t_data_32 *data_32);
-void				add_segment_big_64(struct segment_command_64 *segment, t_data_64 *data);
-void				add_segment_big_32(struct segment_command *segment, t_data_32 *data_32);
-char				get_type_64(uint8_t type, uint8_t n_sect, uint64_t value, t_data_64 *data);
-char				get_type_32(uint8_t type, uint8_t n_sect, uint64_t value, t_data_32 *data);
+typedef struct	s_data
+{
+	void		*ptr;
+	size_t		end_file;
+	char		*file_name;
+	t_arch_32	arch_32;
+	t_arch_64	arch_64;
+}				t_data;
+
+void				get_stat(int fd, char *file_name);
+int					ft_nm(void *ptr, t_data *data);
+void				handle_little_64(void *ptr, t_data *data);
+void				handle_little_32(void *ptr, t_data *data);
+void				handle_big_64(void *ptr, t_data *data);
+void				handle_big_32(void *ptr, t_data *data);
+void				get_symbols_little_64(t_arch_64 *arch);
+void				get_symbols_little_32(t_arch_32 *arch);
+void				get_symbols_big_64(t_arch_64 *arch);
+void				get_symbols_big_32(t_arch_32 *arch);
+int					insert_sym_list_little_64(struct nlist_64 *symbol, t_arch_64 *arch);
+int					insert_sym_list_little_32(struct nlist *symbol, t_arch_32 *arch);
+int					insert_sym_list_big_64(struct nlist_64 *symbol, t_arch_64 *arch);
+int					insert_sym_list_big_32(struct nlist *symbol, t_arch_32 *arch);
+void				insert_by_name_little_64(t_list_sym_64 *new_elem, t_arch_64 *arch);
+void				insert_by_name_little_32(t_list_sym_32 *new_elem, t_arch_32 *arch);
+void				insert_by_name_big_64(t_list_sym_64 *new_elem, t_arch_64 *arch);
+void				insert_by_name_big_32(t_list_sym_32 *new_elem, t_arch_32 *arch);
+void				add_segment_little_64(struct segment_command_64 *segment, t_arch_64 *arch);
+void				add_segment_little_32(struct segment_command *segment, t_arch_32 *arch_32);
+void				add_segment_big_64(struct segment_command_64 *segment, t_arch_64 *arch);
+void				add_segment_big_32(struct segment_command *segment, t_arch_32 *arch_32);
+char				get_type_64(uint8_t type, uint8_t n_sect, uint64_t value, t_arch_64 *arch);
+char				get_type_32(uint8_t type, uint8_t n_sect, uint64_t value, t_arch_32 *arch);
 struct section_64	*get_section_64(uint8_t n_sect, t_section_64 *current);
 struct section		*get_section_32(uint8_t n_sect, t_section_32 *current);
-void				free_all_64(t_data_64 *data);
-void				free_all_32(t_data_32 *data);
+void				free_all_64(t_arch_64 *arch);
+void				free_all_32(t_arch_32 *arch);
 void				free_list_sym_64(t_list_sym_64 *list_sym);
 void				free_list_sym_32(t_list_sym_32 *list_sym);
 void				free_section_64(t_section_64 *section);
@@ -103,8 +116,11 @@ int					get_endianness(uint32_t magic_nbr);
 uint64_t			lte_64(uint64_t nbr);
 uint32_t			lte_32(uint32_t nbr);
 uint16_t			lte_16(uint16_t nbr);
-void				fat_header_little_64(void *ptr);
-void				fat_header_little_32(void *ptr);
-void				fat_header_big_64(void *ptr);
-void				fat_header_big_32(void *ptr);
+void				fat_header_little_64(void *ptr, t_data *data);
+void				fat_header_little_32(void *ptr, t_data *data);
+void				fat_header_big_64(void *ptr, t_data *data);
+void				fat_header_big_32(void *ptr, t_data *data);
+void				handle_ar(t_data *data, void *offset);
+void				get_header_64(t_data *data, void *offset);
+void				get_header_32(t_data *data, void *offset);
 #endif

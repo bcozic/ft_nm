@@ -6,45 +6,64 @@
 /*   By: bcozic <bcozic@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/06 13:38:51 by bcozic            #+#    #+#             */
-/*   Updated: 2018/12/10 16:17:33 by bcozic           ###   ########.fr       */
+/*   Updated: 2018/12/13 12:42:07 by bcozic           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_nm_otool.h"
 
-// static int		split_fat_header(void *ptr, void *begin_fat_arch, int endianness)
-// {
-// 	struct fat_arch	*fat_arch;
-
-// 	fat_arch = (struct fat_arch*)begin_fat_arch;
-// 	ft_printf("%d\n", fat_arch->offset);
-// 	if (*(uint32_t*)(void*)((char*)ptr + fat_arch->offset) == MH_MAGIC_64 || *(uint32_t*)(void*)((char*)ptr + fat_arch->offset) == MH_MAGIC)
-// 	{
-// 		ft_nm((void*)((char*)ptr + fat_arch->offset));
-// 		return (1);
-// 	}
-// 	return (0);
-// }
-
-void	ft_nm(void *ptr)
+int	ft_nm(void *ptr, t_data *data)
 {
 	uint32_t			magic_nbr;
 
+	if ((size_t)ptr + sizeof(uint32_t) > data->end_file)
+	{
+		ft_printf("%p %p\n", data->end_file, ptr);
+		return (0);
+	}
 	magic_nbr = *(uint32_t*)ptr;
 	if (magic_nbr == FAT_MAGIC_64)
-		fat_header_little_64(ptr);
+	{
+		ft_printf("FAT_MAGIC_64\n");
+		// fat_header_little_64(ptr, data);
+	}
 	else if (magic_nbr == FAT_CIGAM_64)
-		fat_header_big_64(ptr);
+	{
+		ft_printf("FAT_CIGAM_64\n");
+		// fat_header_big_64(ptr, data);
+	}
 	else if (magic_nbr == FAT_MAGIC)
-		fat_header_little_32(ptr);
+	{
+		ft_printf("FAT_MAGIC\n");
+		// fat_header_little_32(ptr, data);
+	}
 	else if (magic_nbr == FAT_CIGAM)
-		fat_header_big_32(ptr);
+	{
+		ft_printf("FAT_CIGAM\n");
+		// fat_header_big_32(ptr, data);
+	}
 	else if (magic_nbr == MH_MAGIC_64)
-		handle_little_64(ptr);
+		handle_little_64(ptr, data);
 	else if (magic_nbr == MH_CIGAM_64)
-		handle_big_64(ptr);
+	{
+		ft_printf("MH_CIGAM_64\n");
+		// handle_big_64(ptr, data);
+	}
 	else if (magic_nbr == MH_MAGIC)
-		handle_little_32(ptr);
+		handle_little_32(ptr, data);
 	else if (magic_nbr == MH_CIGAM)
-		handle_big_32(ptr);
+	{
+		ft_printf("MH_CIGAM\n");
+		// handle_big_32(ptr, data);
+	}
+	else if ((size_t)ptr + SARMAG < data->end_file && !ft_memcmp(ARMAG, ptr, SARMAG))
+		handle_ar(data, (char*)ptr + SARMAG);
+	else
+	{
+		// for (int i = 0; i < 20; i++)
+		// 	ft_printf("%02x ", ((uint8_t*)ptr)[i]);
+		// ft_printf("\nELSE\n", *(uint8_t*)ptr, ((uint8_t*)ptr)[1]);
+		return (0);
+	}
+	return (1);
 }

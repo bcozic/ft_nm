@@ -6,7 +6,7 @@
 /*   By: bcozic <bcozic@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/07 19:51:01 by bcozic            #+#    #+#             */
-/*   Updated: 2018/12/08 11:40:54 by bcozic           ###   ########.fr       */
+/*   Updated: 2018/12/13 13:43:32 by bcozic           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include <string.h>
 # include <unistd.h>
 # include "ft_printf.h"
-# include "ft_libmalloc.h"
+# include "ft_libc.h"
 
 # define BUFF_SIZE	256
 # define STR_HEXA	"0123456789ABCDEF"

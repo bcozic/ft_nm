@@ -6,7 +6,7 @@
 #    By: bcozic <bcozic@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/03/19 12:22:35 by barbara           #+#    #+#              #
-#    Updated: 2018/12/10 15:42:51 by bcozic           ###   ########.fr        #
+#    Updated: 2018/12/12 18:25:41 by bcozic           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ SRC = main.c add_segment.c fat_header.c free_all.c\
 	  get_stat.c get_symbols.c get_type.c handle.c\
 	  insert_by_name_little_32.c insert_by_name_little_64.c\
 	  insert_by_name_big_32.c insert_by_name_big_64.c\
-	  insert_sym_list.c little_endian.c
+	  insert_sym_list.c little_endian.c handle_ar.c get_header.c
 
 OBJ = $(addprefix obj/, $(SRC:.c=.o))
 
