@@ -6,7 +6,7 @@
 /*   By: bcozic <bcozic@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/12 17:33:43 by bcozic            #+#    #+#             */
-/*   Updated: 2018/12/13 16:45:57 by bcozic           ###   ########.fr       */
+/*   Updated: 2018/12/13 18:31:57 by bcozic           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static void	call_ft_nm(t_data *data, void *offset)
 	ft_nm(offset, data);
 }
 
-void	get_header_64(t_data *data, void *offset)
+void	get_header_64(t_data *data, void *offset, void *ptr)
 {
 	struct ranlib_64	*ranlib;
 	uint32_t			size;
@@ -42,14 +42,14 @@ void	get_header_64(t_data *data, void *offset)
 	while (current < size)
 	{
 		if (ranlib->ran_off != last_offset)
-			call_ft_nm(data, (char*)data->ptr + ranlib->ran_off);
+			call_ft_nm(data, (char*)ptr + ranlib->ran_off);
 		last_offset = ranlib->ran_off;
 		ranlib = (struct ranlib_64*)((size_t)ranlib + sizeof(struct ranlib_64));
 		current += sizeof(struct ranlib_64);
 	}
 }
 
-void	get_header_32(t_data *data, void *offset)
+void	get_header_32(t_data *data, void *offset, void *ptr)
 {
 	struct ranlib	*ranlib;
 	uint32_t		size;
@@ -64,7 +64,7 @@ void	get_header_32(t_data *data, void *offset)
 	while (current < size)
 	{
 		if (ranlib->ran_off != last_offset)
-			call_ft_nm(data, (char*)data->ptr + ranlib->ran_off);
+			call_ft_nm(data, (char*)ptr + ranlib->ran_off);
 		last_offset = ranlib->ran_off;
 		ranlib = (struct ranlib*)((size_t)ranlib + sizeof(struct ranlib));
 		current += sizeof(struct ranlib);

@@ -6,7 +6,7 @@
 /*   By: bcozic <bcozic@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/06 12:35:11 by bcozic            #+#    #+#             */
-/*   Updated: 2018/12/13 12:17:04 by bcozic           ###   ########.fr       */
+/*   Updated: 2018/12/13 19:10:35 by bcozic           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,24 +22,17 @@ int	main(int ac, char **av)
 	if (ac < 2)
 	{
 		if ((fd = open("a.out", O_RDONLY)) < 0)
-		{
-			write(2, "a.out: No such file or directory.\n", 34);
-			return (0);
-		}
-		get_stat(fd, "a.out");
+			return aff_error(av[0], "a.out", "No such file or directory.\n");
+		get_stat(fd, "a.out", av[0]);
 		close(fd);
 	}
 	while (++i < ac)
 	{
 		if ((fd = open(av[i], O_RDONLY)) < 0)
-		{
-			write(2, av[i], ft_strlen(av[1]));
-			write(2, ": No such file or directory.\n", 30);
-			return (0);
-		}
+			return aff_error(av[0], av[i], "No such file or directory.\n");
 		if (ac > 2)
-			ft_printf("%s:\n", av[i]);
-		get_stat(fd, av[i]);
+			ft_printf("\n%s:\n", av[i]);
+		get_stat(fd, av[i], av[0]);
 		close(fd);
 	}
 	return (0);

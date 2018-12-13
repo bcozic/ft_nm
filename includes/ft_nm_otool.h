@@ -6,7 +6,7 @@
 /*   By: bcozic <bcozic@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/06 13:06:01 by bcozic            #+#    #+#             */
-/*   Updated: 2018/12/13 17:54:43 by bcozic           ###   ########.fr       */
+/*   Updated: 2018/12/13 19:06:49 by bcozic           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,6 @@ typedef struct	s_arch_64
 	t_list_sym_64			*list_sym;
 	char					*stringtable;
 	t_section_64			*section;
-	int						endianness;
-	int		wait;
 }				t_arch_64;
 
 typedef struct	s_arch_32
@@ -67,8 +65,6 @@ typedef struct	s_arch_32
 	t_list_sym_32			*list_sym;
 	char					*stringtable;
 	t_section_32			*section;
-	int						endianness;
-	int		wait;
 }				t_arch_32;
 
 typedef struct	s_data
@@ -80,7 +76,8 @@ typedef struct	s_data
 	t_arch_64	arch_64;
 }				t_data;
 
-void				get_stat(int fd, char *file_name);
+int					get_stat(int fd, char *file_name, char *exec_name);
+int					aff_error(char *exec, char *file, char *str_error);
 int					ft_nm(void *ptr, t_data *data);
 void				handle_little_64(void *ptr, t_data *data);
 void				handle_little_32(void *ptr, t_data *data);
@@ -120,8 +117,8 @@ void				fat_header_little_64(void *ptr, t_data *data);
 void				fat_header_little_32(void *ptr, t_data *data);
 void				fat_header_big_64(void *ptr, t_data *data);
 void				fat_header_big_32(void *ptr, t_data *data);
-void				handle_ar(t_data *data, void *offset);
-void				get_header_64(t_data *data, void *offset);
-void				get_header_32(t_data *data, void *offset);
+void				handle_ar(t_data *data, void *offset, void *ptr);
+void				get_header_64(t_data *data, void *offset, void *ptr);
+void				get_header_32(t_data *data, void *offset, void *ptr);
 void				print_architecture(uint32_t arch, t_data *data);
 #endif

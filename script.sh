@@ -8,8 +8,8 @@ rm fail_test
 for OUT in /usr/bin/*;
 do
 	echo "$OUT"
-	./ft_nm $OUT > test
-	nm $OUT > test2
+	./ft_nm $OUT > test 2>> error
+	nm $OUT > test2 2>> error
 	diff "test" "test2"
 	res=$?
 	if [ $res == 1 ]
@@ -28,8 +28,8 @@ done
 for OUT in /bin/*;
 do
 	echo "$OUT"
-	./ft_nm $OUT > test
-	nm $OUT > test2
+	./ft_nm $OUT > test 2>> error
+	nm $OUT > test2 2>> error
 	diff "test" "test2"
 	res=$?
 	if [ $res == 1 ]
@@ -48,8 +48,8 @@ done
 for OUT in /sbin/*;
 do
 	echo "$OUT"
-	./ft_nm $OUT > test
-	nm $OUT > test2
+	./ft_nm $OUT > test 2>> error
+	nm $OUT > test2 2>> error
 	diff "test" "test2"
 	res=$?
 	if [ $res == 1 ]
@@ -68,8 +68,8 @@ done
 for OUT in /usr/lib/*;
 do
 	echo "$OUT"
-	./ft_nm $OUT > test
-	nm $OUT > test2
+	./ft_nm $OUT > test 2>> error
+	nm $OUT > test2 2>> error
 	diff "test" "test2"
 	res=$?
 	if [ $res == 1 ]
@@ -88,8 +88,8 @@ done
 for OUT in /usr/sbin/*;
 do
 	echo "$OUT"
-	./ft_nm $OUT > test
-	nm $OUT > test2
+	./ft_nm $OUT > test 2>> error
+	nm $OUT > test2 2>> error
 	diff "test" "test2"
 	res=$?
 	if [ $res == 1 ]
@@ -108,8 +108,8 @@ done
 for OUT in obj/*;
 do
 	echo "$OUT"
-	./ft_nm $OUT > test
-	nm $OUT > test2
+	./ft_nm $OUT > test 2>> error
+	nm $OUT > test2 2>> error
 	diff "test" "test2"
 	res=$?
 	if [ $res == 1 ]
@@ -128,8 +128,8 @@ done
 for OUT in libft/obj/*;
 do
 	echo "$OUT"
-	./ft_nm $OUT > test
-	nm $OUT > test2
+	./ft_nm $OUT > test 2>> error
+	nm $OUT > test2 2>> error
 	diff "test" "test2"
 	res=$?
 	if [ $res == 1 ]
@@ -148,8 +148,8 @@ done
 for OUT in /usr/libexec/*;
 do
 	echo "$OUT"
-	./ft_nm $OUT > test
-	nm $OUT > test2
+	./ft_nm $OUT > test 2>> error
+	nm $OUT > test2 2>> error
 	diff "test" "test2"
 	res=$?
 	if [ $res == 1 ]
@@ -168,8 +168,8 @@ done
 for OUT in /usr/libexec/apache2/*;
 do
 	echo "$OUT"
-	./ft_nm $OUT > test
-	nm $OUT > test2
+	./ft_nm $OUT > test 2>> error
+	nm $OUT > test2 2>> error
 	diff "test" "test2"
 	res=$?
 	if [ $res == 1 ]
