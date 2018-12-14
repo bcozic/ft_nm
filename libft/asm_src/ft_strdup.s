@@ -1,7 +1,7 @@
 section .text
 global _ft_strdup
 extern _ft_strlen
-extern _malloc
+extern _ft_malloc
 extern _memcpy
 
 _ft_strdup:
@@ -17,7 +17,7 @@ len:
 			push r9
 			push rax
 call_malloc:
-			call _malloc
+			call _ft_malloc
 			cmp rax, 0
 			jz end_strdup
 end_call:

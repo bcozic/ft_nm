@@ -1,32 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   insert_by_name_little_32.c                         :+:      :+:    :+:   */
+/*   insert_by_name_big_64.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bcozic <bcozic@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/10 15:42:59 by bcozic            #+#    #+#             */
-/*   Updated: 2018/12/13 12:39:58 by bcozic           ###   ########.fr       */
+/*   Created: 2018/12/10 15:43:11 by bcozic            #+#    #+#             */
+/*   Updated: 2018/12/14 15:44:38 by bcozic           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_nm_otool.h"
 
-static void	delete_next(t_list_sym_32 *current)
+static void	delete_next(t_list_sym_64 *current)
 {
-	t_list_sym_32	*to_delete;
+	t_list_sym_64	*to_delete;
 
 	to_delete = current->next;
 	current->next = current->next->next;
 	ft_free(to_delete);
 }
 
-static void	check_duplicate_first(t_list_sym_32 *current, t_arch_32 *arch)
+static void	check_duplicate_first(t_list_sym_64 *current, t_arch_64 *arch)
 {
-	t_list_sym_32	*to_delete;
+	t_list_sym_64	*to_delete;
 
-	if (ft_strcmp((arch->stringtable + current->symbol->n_un.n_strx),
-			arch->stringtable + current->next->symbol->n_un.n_strx))
+	if (ft_strcmp((arch->stringtable + lte_32(current->symbol->n_un.n_strx)),
+			arch->stringtable + lte_32(current->next->symbol->n_un.n_strx)))
 		return ;
 	if (current->symbol->n_value == current->next->symbol->n_value)
 	{
@@ -49,11 +49,11 @@ static void	check_duplicate_first(t_list_sym_32 *current, t_arch_32 *arch)
 		delete_next(current);
 }
 
-static void	check_duplicate(t_list_sym_32 *current, t_arch_32 *arch)
+static void	check_duplicate(t_list_sym_64 *current, t_arch_64 *arch)
 {
 	if (!current->next->next || ft_strcmp((arch->stringtable
-			+ current->next->symbol->n_un.n_strx),
-			arch->stringtable + current->next->next->symbol->n_un.n_strx))
+			+ lte_32(current->next->symbol->n_un.n_strx)), arch->stringtable
+			+ lte_32(current->next->next->symbol->n_un.n_strx)))
 		return ;
 	if (current->next->symbol->n_value
 			== current->next->next->symbol->n_value)
@@ -69,31 +69,31 @@ static void	check_duplicate(t_list_sym_32 *current, t_arch_32 *arch)
 		delete_next(current->next);
 }
 
-void		insert_by_name_little_32(t_list_sym_32 *new_elem, t_arch_32 *arch)
+void		insert_by_name_big_64(t_list_sym_64 *new, t_arch_64 *arch)
 {
-	t_list_sym_32	*current;
-	int				diff;
+	t_list_sym_64	*c;
+	int				d;
 
-	current = arch->list_sym;
-	if ((diff = ft_strcmp((arch->stringtable + new_elem->symbol->n_un.n_strx),
-			arch->stringtable + current->symbol->n_un.n_strx)) < 0
-			|| (!diff && new_elem->symbol->n_value < current->symbol->n_value))
+	c = arch->list_sym;
+	if ((d = ft_strcmp((arch->stringtable + lte_32(new->symbol->n_un.n_strx)),
+			arch->stringtable + lte_32(c->symbol->n_un.n_strx))) < 0 || (!d
+			&& lte_64(new->symbol->n_value) < lte_64(c->symbol->n_value)))
 	{
-		new_elem->next = current;
-		arch->list_sym = new_elem;
+		new->next = c;
+		arch->list_sym = new;
 		check_duplicate_first(arch->list_sym, arch);
 		return ;
 	}
-	while (current->next && ft_strcmp(arch->stringtable
-			+ new_elem->symbol->n_un.n_strx, arch->stringtable
-			+ current->next->symbol->n_un.n_strx) > 0)
-		current = current->next;
-	while (current->next && !ft_strcmp(arch->stringtable
-			+ new_elem->symbol->n_un.n_strx, arch->stringtable
-			+ current->next->symbol->n_un.n_strx)
-			&& new_elem->symbol->n_value > current->next->symbol->n_value)
-		current = current->next;
-	new_elem->next = current->next;
-	current->next = new_elem;
-	check_duplicate(current, arch);
+	while (c->next && ft_strcmp(arch->stringtable
+			+ lte_32(new->symbol->n_un.n_strx), arch->stringtable
+			+ lte_32(c->next->symbol->n_un.n_strx)) > 0)
+		c = c->next;
+	while (c->next && !ft_strcmp(arch->stringtable
+			+ lte_32(new->symbol->n_un.n_strx), arch->stringtable
+			+ lte_32(c->next->symbol->n_un.n_strx))
+			&& lte_64(new->symbol->n_value) > lte_64(c->next->symbol->n_value))
+		c = c->next;
+	new->next = c->next;
+	c->next = new;
+	check_duplicate(c, arch);
 }

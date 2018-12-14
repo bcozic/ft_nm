@@ -6,7 +6,7 @@
 /*   By: bcozic <bcozic@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/06 13:38:51 by bcozic            #+#    #+#             */
-/*   Updated: 2018/12/13 19:12:55 by bcozic           ###   ########.fr       */
+/*   Updated: 2018/12/14 14:49:01 by bcozic           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@ int	ft_nm(void *ptr, t_data *data)
 {
 	uint32_t			magic_nbr;
 
-	if ((size_t)ptr + SARMAG > data->end_file)
-		return (0);
 	magic_nbr = *(uint32_t*)ptr;
 	if (magic_nbr == FAT_MAGIC_64)
 		fat_header_little_64(ptr, data);

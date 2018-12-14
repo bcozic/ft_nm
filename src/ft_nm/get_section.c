@@ -6,7 +6,7 @@
 /*   By: bcozic <bcozic@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/09 14:27:00 by bcozic            #+#    #+#             */
-/*   Updated: 2018/12/12 12:11:53 by bcozic           ###   ########.fr       */
+/*   Updated: 2018/12/14 14:52:06 by bcozic           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ struct section_64	*get_section_64(uint8_t n_sect, t_section_64 *current)
 	if (n_sect == 0)
 		return (NULL);
 	i = 0;
-	while(++i < n_sect)
+	while (++i < n_sect)
 	{
 		if (!current)
 			return (NULL);
@@ -37,7 +37,7 @@ struct section		*get_section_32(uint8_t n_sect, t_section_32 *current)
 	if (n_sect == 0)
 		return (NULL);
 	i = 0;
-	while(++i < n_sect)
+	while (++i < n_sect)
 	{
 		if (!current)
 			return (NULL);

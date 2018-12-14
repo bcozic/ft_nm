@@ -6,7 +6,7 @@
 /*   By: bcozic <bcozic@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/09 16:58:16 by bcozic            #+#    #+#             */
-/*   Updated: 2018/12/13 14:05:41 by bcozic           ###   ########.fr       */
+/*   Updated: 2018/12/14 14:45:59 by bcozic           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	free_all_64(t_arch_64 *arch)
 {
 	free_list_sym_64(arch->list_sym);
-	free_section_64(arch->section);	
+	free_section_64(arch->section);
 	ft_bzero(arch, sizeof(t_arch_64));
 }
 

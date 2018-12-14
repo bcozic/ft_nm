@@ -6,7 +6,7 @@
 /*   By: bcozic <bcozic@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/13 17:48:52 by bcozic            #+#    #+#             */
-/*   Updated: 2018/12/13 18:05:59 by bcozic           ###   ########.fr       */
+/*   Updated: 2018/12/14 15:46:22 by bcozic           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,5 +39,4 @@ void	print_architecture(uint32_t arch, t_data *data)
 		ft_printf("(for architecture sparc):\n");
 	else
 		ft_printf(":\n");
-
 }

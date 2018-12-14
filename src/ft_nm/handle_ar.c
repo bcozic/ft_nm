@@ -6,7 +6,7 @@
 /*   By: bcozic <bcozic@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/12 14:59:20 by bcozic            #+#    #+#             */
-/*   Updated: 2018/12/13 18:31:22 by bcozic           ###   ########.fr       */
+/*   Updated: 2018/12/14 19:19:05 by bcozic           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,22 +19,24 @@ void	handle_ar(t_data *data, void *offset, void *ptr)
 
 	header = (struct ar_hdr*)offset;
 	offset = (char*)offset + sizeof(struct ar_hdr);
-	if ((size_t)offset > data->end_file)
+	if ((size_t)offset + 48 > data->end_file)
 		return ;
+	i = 0;
+	while (*(uint8_t*)(void*)((char*)offset + i))
+	{
+		if ((size_t)offset + i > data->end_file)
+			return ;
+		i++;
+	}
+	while (*(uint8_t*)(void*)((char*)offset + i) == 0)
+	{
+		if ((size_t)offset + i > data->end_file)
+			return ;
+		i++;
+	}
 	if (!ft_strcmp(offset, SYMDEF) || !ft_strcmp(offset, SYMDEF_SORTED))
-	{
-		i = ft_strlen(offset);
-		while (*((char*)offset + i) == 0)
-			i += 1;
-		offset = (char*)offset + i;
-		get_header_32(data, offset, ptr);
-	}
-	if (!ft_strcmp(offset, SYMDEF_64) || !ft_strcmp(offset, SYMDEF_64_SORTED))
-	{
-		i = ft_strlen(offset);
-		while (*((char*)offset + i) == 0)
-			i += 1;
-		offset = (char*)offset + i;
-		get_header_64(data, offset, ptr);
-	}
+		get_header_32(data, (char*)offset + i, ptr);
+	else if (!ft_strcmp(offset, SYMDEF_64)
+			|| !ft_strcmp(offset, SYMDEF_64_SORTED))
+		get_header_64(data, (char*)offset + i, ptr);
 }
