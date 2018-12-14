@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_nm_otool.h                                      :+:      :+:    :+:   */
+/*   ft_nm.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bcozic <bcozic@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/06 13:06:01 by bcozic            #+#    #+#             */
-/*   Updated: 2018/12/14 15:48:59 by bcozic           ###   ########.fr       */
+/*   Created: 2018/12/14 19:30:31 by bcozic            #+#    #+#             */
+/*   Updated: 2018/12/14 19:30:37 by bcozic           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_NM_OTOOL_H
-# define FT_NM_OTOOL_H
+#ifndef FT_NM_H
+# define FT_NM_H
 
 # include <mach-o/loader.h>
 # include <mach-o/nlist.h>

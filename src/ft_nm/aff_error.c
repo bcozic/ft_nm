@@ -6,11 +6,11 @@
 /*   By: bcozic <bcozic@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/13 19:03:42 by bcozic            #+#    #+#             */
-/*   Updated: 2018/12/13 19:09:07 by bcozic           ###   ########.fr       */
+/*   Updated: 2018/12/14 19:31:57 by bcozic           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_nm_otool.h"
+#include "ft_nm.h"
 
 int	aff_error(char *exec, char *file, char *str_error)
 {

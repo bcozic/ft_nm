@@ -6,11 +6,11 @@
 /*   By: bcozic <bcozic@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/10 15:42:59 by bcozic            #+#    #+#             */
-/*   Updated: 2018/12/14 15:28:02 by bcozic           ###   ########.fr       */
+/*   Updated: 2018/12/14 19:33:01 by bcozic           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_nm_otool.h"
+#include "ft_nm.h"
 
 static void	delete_next(t_list_sym_32 *current)
 {

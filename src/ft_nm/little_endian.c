@@ -6,11 +6,11 @@
 /*   By: bcozic <bcozic@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/10 11:42:53 by bcozic            #+#    #+#             */
-/*   Updated: 2018/12/10 14:29:05 by bcozic           ###   ########.fr       */
+/*   Updated: 2018/12/14 19:33:01 by bcozic           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_nm_otool.h"
+#include "ft_nm.h"
 
 uint64_t	lte_64(uint64_t nbr)
 {

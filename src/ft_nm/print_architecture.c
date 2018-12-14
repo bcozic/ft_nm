@@ -6,11 +6,11 @@
 /*   By: bcozic <bcozic@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/13 17:48:52 by bcozic            #+#    #+#             */
-/*   Updated: 2018/12/14 15:46:22 by bcozic           ###   ########.fr       */
+/*   Updated: 2018/12/14 19:33:01 by bcozic           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_nm_otool.h"
+#include "ft_nm.h"
 
 void	print_architecture(uint32_t arch, t_data *data)
 {

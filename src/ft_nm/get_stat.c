@@ -6,13 +6,13 @@
 /*   By: bcozic <bcozic@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/06 13:38:44 by bcozic            #+#    #+#             */
-/*   Updated: 2018/12/14 14:52:42 by bcozic           ###   ########.fr       */
+/*   Updated: 2018/12/14 19:33:01 by bcozic           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <sys/mman.h>
 #include <sys/stat.h>
-#include "ft_nm_otool.h"
+#include "ft_nm.h"
 
 int	get_stat(int fd, char *file_name, char *exec_name)
 {

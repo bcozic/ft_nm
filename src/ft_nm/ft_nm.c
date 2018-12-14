@@ -6,11 +6,11 @@
 /*   By: bcozic <bcozic@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/06 13:38:51 by bcozic            #+#    #+#             */
-/*   Updated: 2018/12/14 14:49:01 by bcozic           ###   ########.fr       */
+/*   Updated: 2018/12/14 19:33:01 by bcozic           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_nm_otool.h"
+#include "ft_nm.h"
 
 int	ft_nm(void *ptr, t_data *data)
 {

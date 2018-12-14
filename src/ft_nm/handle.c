@@ -6,13 +6,24 @@
 /*   By: bcozic <bcozic@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/07 09:56:17 by bcozic            #+#    #+#             */
-/*   Updated: 2018/12/14 18:59:49 by bcozic           ###   ########.fr       */
+/*   Updated: 2018/12/14 20:21:53 by bcozic           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_nm_otool.h"
+#include "ft_nm.h"
 
-void	handle_little_64(void *ptr, t_data *data)
+static int	check_lc(struct load_command *lc, t_data *data)
+{
+	if ((size_t)lc + sizeof(struct load_command) > data->end_file)
+	{
+		free_all_64(&data->arch_64);
+		free_all_32(&data->arch_32);
+		return (0);
+	}
+	return (1);
+}
+
+void		handle_little_64(void *ptr, t_data *data)
 {
 	struct load_command	*lc;
 	uint32_t			i;
@@ -32,13 +43,15 @@ void	handle_little_64(void *ptr, t_data *data)
 			add_segment_little_64((struct segment_command_64*)((void*)lc),
 					&data->arch_64);
 		lc = (void*)((size_t)lc + lc->cmdsize);
+		if (!check_lc(lc, data))
+			return ;
 	}
 	if (data->arch_64.symtab)
 		get_symbols_little_64(&data->arch_64);
 	free_all_64(&data->arch_64);
 }
 
-void	handle_little_32(void *ptr, t_data *data)
+void		handle_little_32(void *ptr, t_data *data)
 {
 	struct load_command	*lc;
 	uint32_t			i;
@@ -58,17 +71,18 @@ void	handle_little_32(void *ptr, t_data *data)
 			add_segment_little_32((struct segment_command*)((void*)lc),
 					&data->arch_32);
 		lc = (void*)((size_t)lc + lc->cmdsize);
+		if (!check_lc(lc, data))
+			return ;
 	}
 	if (data->arch_32.symtab)
 		get_symbols_little_32(&data->arch_32);
 	free_all_32(&data->arch_32);
 }
 
-void	handle_big_64(void *ptr, t_data *data)
+void		handle_big_64(void *ptr, t_data *data)
 {
 	struct load_command	*lc;
 	uint32_t			ncmds;
-	uint32_t			lc_cmd;
 
 	data->arch_64.ptr = ptr;
 	data->arch_64.end_file = data->end_file;
@@ -79,24 +93,24 @@ void	handle_big_64(void *ptr, t_data *data)
 	ncmds = lte_32(data->arch_64.header->ncmds);
 	while (ncmds--)
 	{
-		lc_cmd = lte_32(lc->cmd);
-		if (lc_cmd == LC_SYMTAB)
+		if (lte_32(lc->cmd) == LC_SYMTAB)
 			data->arch_64.symtab = (struct symtab_command*)lc;
-		else if (lc_cmd == LC_SEGMENT_64)
+		else if (lte_32(lc->cmd) == LC_SEGMENT_64)
 			add_segment_big_64((struct segment_command_64*)((void*)lc),
 					&data->arch_64);
 		lc = (void*)((size_t)lc + lte_32(lc->cmdsize));
+		if (!check_lc(lc, data))
+			return ;
 	}
 	if (data->arch_64.symtab)
 		get_symbols_big_64(&data->arch_64);
 	free_all_64(&data->arch_64);
 }
 
-void	handle_big_32(void *ptr, t_data *data)
+void		handle_big_32(void *ptr, t_data *data)
 {
 	struct load_command	*lc;
 	uint32_t			ncmds;
-	uint32_t			lc_cmd;
 
 	data->arch_32.ptr = ptr;
 	data->arch_32.end_file = data->end_file;
@@ -107,13 +121,14 @@ void	handle_big_32(void *ptr, t_data *data)
 	ncmds = lte_32(data->arch_32.header->ncmds);
 	while (ncmds--)
 	{
-		lc_cmd = lte_32(lc->cmd);
-		if (lc_cmd == LC_SYMTAB)
+		if (lte_32(lc->cmd) == LC_SYMTAB)
 			data->arch_32.symtab = (struct symtab_command*)lc;
-		else if (lc_cmd == LC_SEGMENT)
+		else if (lte_32(lc->cmd) == LC_SEGMENT)
 			add_segment_big_32((struct segment_command*)((void*)lc),
 					&data->arch_32);
 		lc = (void*)((size_t)lc + lte_32(lc->cmdsize));
+		if (!check_lc(lc, data))
+			return ;
 	}
 	if (data->arch_32.symtab)
 		get_symbols_big_32(&data->arch_32);

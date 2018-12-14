@@ -6,11 +6,11 @@
 /*   By: bcozic <bcozic@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/10 14:12:26 by bcozic            #+#    #+#             */
-/*   Updated: 2018/12/13 14:03:49 by bcozic           ###   ########.fr       */
+/*   Updated: 2018/12/14 19:31:49 by bcozic           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_nm_otool.h"
+#include "ft_nm.h"
 
 void	add_segment_little_64(struct segment_command_64 *segment,
 		t_arch_64 *arch)

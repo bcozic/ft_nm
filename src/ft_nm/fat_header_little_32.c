@@ -6,11 +6,11 @@
 /*   By: bcozic <bcozic@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/14 13:58:43 by bcozic            #+#    #+#             */
-/*   Updated: 2018/12/14 18:59:42 by bcozic           ###   ########.fr       */
+/*   Updated: 2018/12/14 19:31:40 by bcozic           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_nm_otool.h"
+#include "ft_nm.h"
 
 static int	only_one_arch(struct fat_header *header, t_data *data, void *ptr)
 {
