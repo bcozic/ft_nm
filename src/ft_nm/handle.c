@@ -6,7 +6,7 @@
 /*   By: bcozic <bcozic@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/07 09:56:17 by bcozic            #+#    #+#             */
-/*   Updated: 2018/12/14 20:21:53 by bcozic           ###   ########.fr       */
+/*   Updated: 2018/12/15 13:49:40 by bcozic           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,9 @@ void		handle_little_64(void *ptr, t_data *data)
 		if (lc->cmd == LC_SYMTAB)
 			data->arch_64.symtab = (struct symtab_command*)lc;
 		else if (lc->cmd == LC_SEGMENT_64)
-			add_segment_little_64((struct segment_command_64*)((void*)lc),
-					&data->arch_64);
+			if (!add_segment_little_64((struct segment_command_64*)((void*)lc),
+					&data->arch_64))
+				return ;
 		lc = (void*)((size_t)lc + lc->cmdsize);
 		if (!check_lc(lc, data))
 			return ;
@@ -68,8 +69,9 @@ void		handle_little_32(void *ptr, t_data *data)
 		if (lc->cmd == LC_SYMTAB)
 			data->arch_32.symtab = (struct symtab_command*)lc;
 		else if (lc->cmd == LC_SEGMENT)
-			add_segment_little_32((struct segment_command*)((void*)lc),
-					&data->arch_32);
+			if (!add_segment_little_32((struct segment_command*)((void*)lc),
+					&data->arch_32))
+				return ;
 		lc = (void*)((size_t)lc + lc->cmdsize);
 		if (!check_lc(lc, data))
 			return ;
@@ -96,8 +98,9 @@ void		handle_big_64(void *ptr, t_data *data)
 		if (lte_32(lc->cmd) == LC_SYMTAB)
 			data->arch_64.symtab = (struct symtab_command*)lc;
 		else if (lte_32(lc->cmd) == LC_SEGMENT_64)
-			add_segment_big_64((struct segment_command_64*)((void*)lc),
-					&data->arch_64);
+			if (!add_segment_big_64((struct segment_command_64*)((void*)lc),
+					&data->arch_64))
+				return ;
 		lc = (void*)((size_t)lc + lte_32(lc->cmdsize));
 		if (!check_lc(lc, data))
 			return ;
@@ -124,8 +127,9 @@ void		handle_big_32(void *ptr, t_data *data)
 		if (lte_32(lc->cmd) == LC_SYMTAB)
 			data->arch_32.symtab = (struct symtab_command*)lc;
 		else if (lte_32(lc->cmd) == LC_SEGMENT)
-			add_segment_big_32((struct segment_command*)((void*)lc),
-					&data->arch_32);
+			if (!add_segment_big_32((struct segment_command*)((void*)lc),
+					&data->arch_32))
+				return ;
 		lc = (void*)((size_t)lc + lte_32(lc->cmdsize));
 		if (!check_lc(lc, data))
 			return ;

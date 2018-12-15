@@ -8,6 +8,7 @@ for ((i=1; i<=$1; i++)); do
 	./ft_nm a.out
 	if [ $? != 0 ]
 	then
+		valgrind ./ft_nm a.out
 		exit 1
 	fi
 	echo $newfsize

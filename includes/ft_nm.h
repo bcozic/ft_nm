@@ -6,7 +6,7 @@
 /*   By: bcozic <bcozic@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/14 19:30:31 by bcozic            #+#    #+#             */
-/*   Updated: 2018/12/14 19:30:37 by bcozic           ###   ########.fr       */
+/*   Updated: 2018/12/15 13:48:44 by bcozic           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,13 +101,13 @@ void				insert_by_name_little_32(t_list_sym_32 *new,
 		t_arch_32 *arch);
 void				insert_by_name_big_64(t_list_sym_64 *new, t_arch_64 *arch);
 void				insert_by_name_big_32(t_list_sym_32 *new, t_arch_32 *arch);
-void				add_segment_little_64(struct segment_command_64 *segment,
+int					add_segment_little_64(struct segment_command_64 *segment,
 		t_arch_64 *arch);
-void				add_segment_little_32(struct segment_command *segment,
+int					add_segment_little_32(struct segment_command *segment,
 		t_arch_32 *arch_32);
-void				add_segment_big_64(struct segment_command_64 *segment,
+int					add_segment_big_64(struct segment_command_64 *segment,
 		t_arch_64 *arch);
-void				add_segment_big_32(struct segment_command *segment,
+int					add_segment_big_32(struct segment_command *segment,
 		t_arch_32 *arch_32);
 char				get_type_64(uint8_t type, uint8_t n_sect, uint64_t value,
 		t_arch_64 *arch);
