@@ -6,7 +6,7 @@
 #    By: bcozic <bcozic@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/03/19 12:22:35 by barbara           #+#    #+#              #
-#    Updated: 2018/12/15 20:03:10 by bcozic           ###   ########.fr        #
+#    Updated: 2018/12/15 20:33:00 by bcozic           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,7 +35,8 @@ SRC_NM = main.c free_all.c print_symbol.c free_list_sym.c\
 SRC_OTOOL = main.c aff_error.c fat_header_big_32.c fat_header_big_64.c\
 			fat_header_little_32.c fat_header_little_64.c ft_otool.c\
 			get_section.c get_stat.c handle_ar.c handle.c little_endian.c\
-			print_section.c print_architecture.c get_header.c print_name.c
+			print_section.c print_architecture.c get_header.c print_name.c\
+			print_ppc.c
 
 OBJ_NM = $(addprefix obj/ft_nm/, $(SRC_NM:.c=.o))
 

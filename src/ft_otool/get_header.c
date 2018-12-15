@@ -6,7 +6,7 @@
 /*   By: bcozic <bcozic@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/12 17:33:43 by bcozic            #+#    #+#             */
-/*   Updated: 2018/12/15 19:01:08 by bcozic           ###   ########.fr       */
+/*   Updated: 2018/12/15 21:06:41 by bcozic           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static void	call_ft_nm(t_data *data, void *offset)
 	offset = (char*)offset + sizeof(struct ar_hdr);
 	if ((size_t)offset + 48 > data->end_file)
 		return ;
-	ft_printf("\n%s(%s):\n", data->file_name, offset);
+	ft_printf("%s(%s):\n", data->file_name, offset);
 	i = 0;
 	while (*(uint8_t*)(void*)((char*)offset + i))
 	{
@@ -51,6 +51,7 @@ void		get_header_64(t_data *data, void *offset, void *ptr)
 	ranlib = (struct ranlib_64*)offset;
 	current = 0;
 	last_offset = 0;
+	ft_printf("Archive : %s:\n", data->file_name);
 	while (current < size)
 	{
 		if (ranlib->ran_off > last_offset)
@@ -77,6 +78,7 @@ void		get_header_32(t_data *data, void *offset, void *ptr)
 	ranlib = (struct ranlib*)offset;
 	current = 0;
 	last_offset = 0;
+	ft_printf("Archive %s:\n", data->file_name);
 	while (current < size && size)
 	{
 		if (ranlib->ran_off != last_offset)

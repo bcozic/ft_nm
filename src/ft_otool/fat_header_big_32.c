@@ -6,7 +6,7 @@
 /*   By: bcozic <bcozic@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/14 14:41:12 by bcozic            #+#    #+#             */
-/*   Updated: 2018/12/15 20:08:45 by bcozic           ###   ########.fr       */
+/*   Updated: 2018/12/15 21:01:36 by bcozic           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static int	only_one_arch(struct fat_header *header, t_data *data, void *ptr)
 		arch = (struct fat_arch*)ptr_arch;
 		if (lte_32((uint32_t)arch->cputype) == CPU_TYPE_X86_64)
 		{
-			ft_printf("%s:\n", data->file_name);
+			print_name((char*)ptr + lte_32(arch->offset), data);
 			ft_otool((char*)ptr + lte_32(arch->offset), data);
 			return (1);
 		}
