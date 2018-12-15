@@ -6,11 +6,11 @@
 /*   By: bcozic <bcozic@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/12 17:33:43 by bcozic            #+#    #+#             */
-/*   Updated: 2018/12/15 19:00:18 by bcozic           ###   ########.fr       */
+/*   Updated: 2018/12/15 19:01:08 by bcozic           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_nm.h"
+#include "ft_otool.h"
 
 static void	call_ft_nm(t_data *data, void *offset)
 {
@@ -36,7 +36,7 @@ static void	call_ft_nm(t_data *data, void *offset)
 		i++;
 	}
 	offset = (char*)offset + i;
-	ft_nm(offset, data);
+	ft_otool(offset, data);
 }
 
 void		get_header_64(t_data *data, void *offset, void *ptr)

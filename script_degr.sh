@@ -1,10 +1,9 @@
 #! /bin/bash
 
-for ((i=1; i<=$1; i++)); do
-	newfsize=$1
+for ((i=1; i<=$2; i++)); do
+	newfsize=$2
 	((newfsize-=$i))
-	cp a2.out a.out
-	dd if=a.out of=a2.out bs=1 count=$newfsize
+	dd if=$1 of=a.out bs=1 count=$newfsize
 	./ft_nm a.out
 	if [ $? != 0 ]
 	then

@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_nm.c                                            :+:      :+:    :+:   */
+/*   ft_otool.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bcozic <bcozic@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/06 13:38:51 by bcozic            #+#    #+#             */
-/*   Updated: 2018/12/15 19:01:47 by bcozic           ###   ########.fr       */
+/*   Updated: 2018/12/15 19:01:41 by bcozic           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_nm.h"
+#include "ft_otool.h"
 
-int	ft_nm(void *ptr, t_data *data)
+int	ft_otool(void *ptr, t_data *data)
 {
 	if ((size_t)ptr + sizeof(uint32_t) > data->end_file)
 		return (0);
