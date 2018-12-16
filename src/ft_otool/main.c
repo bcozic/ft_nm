@@ -6,7 +6,7 @@
 /*   By: bcozic <bcozic@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/06 12:35:11 by bcozic            #+#    #+#             */
-/*   Updated: 2018/12/15 18:36:48 by bcozic           ###   ########.fr       */
+/*   Updated: 2018/12/16 19:09:09 by bcozic           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,13 +30,7 @@ int	main(int ac, char **av)
 	{
 		if ((fd = open(av[i], O_RDONLY)) < 0)
 			return (aff_error(av[0], av[i], "No such file or directory.\n"));
-		if (ac > 2)
-			ft_printf("\n%s:\n", av[i]);
-		if (!get_stat(fd, av[i], av[0]))
-		{
-			close(fd);
-			return (0);
-		}
+		get_stat(fd, av[i], av[0]);
 		close(fd);
 	}
 	return (0);

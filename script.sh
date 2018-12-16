@@ -3,25 +3,23 @@
 success=0
 fail=0
 
-rm diff_test
-rm fail_test
+rm diff_test2
 for OUT in /usr/bin/*;
 do
 	echo "$OUT"
-	./ft_nm $OUT > test 2>> error
+	./ft_nm $OUT > test3 2>> error
 	if [ $? != 0 ]
 	then
 		valgrind ./ft_nm $OUT
 		exit 1
 	fi
-	nm $OUT > test2 2>> error
-	diff "test" "test2"
+	nm $OUT > test4 2>> error
+	diff "test3" "test4"
 	res=$?
 	if [ $res == 1 ]
 	then
-		echo -e "$OUT :\n\n" >> diff_test
-		echo -e "$OUT :\n" >> fail_test
-		diff "test" "test2" >> diff_test
+		echo -e "\n\n$OUT :" >> diff_test2
+		diff "test3" "test4" >> diff_test2
 		((fail++))
 	elif [ $res == 0 ]
 	then
@@ -33,20 +31,19 @@ done
 for OUT in /bin/*;
 do
 	echo "$OUT"
-	./ft_nm $OUT > test 2>> error
+	./ft_nm $OUT > test3 2>> error
 	if [ $? != 0 ]
 	then
 		valgrind ./ft_nm $OUT
 		exit 1
 	fi
-	nm $OUT > test2 2>> error
-	diff "test" "test2"
+	nm $OUT > test4 2>> error
+	diff "test3" "test4"
 	res=$?
 	if [ $res == 1 ]
 	then
-		echo -e "$OUT :\n\n" >> diff_test
-		echo -e "$OUT :\n" >> fail_test
-		diff "test" "test2" >> diff_test
+		echo -e "\n\n$OUT :" >> diff_test2
+		diff "test3" "test4" >> diff_test2
 		((fail++))
 	elif [ $res == 0 ]
 	then
@@ -58,20 +55,19 @@ done
 for OUT in /sbin/*;
 do
 	echo "$OUT"
-	./ft_nm $OUT > test 2>> error
+	./ft_nm $OUT > test3 2>> error
 	if [ $? != 0 ]
 	then
 		valgrind ./ft_nm $OUT
 		exit 1
 	fi
-	nm $OUT > test2 2>> error
-	diff "test" "test2"
+	nm $OUT > test4 2>> error
+	diff "test3" "test4"
 	res=$?
 	if [ $res == 1 ]
 	then
-		echo -e "$OUT :\n\n" >> diff_test
-		echo -e "$OUT :\n" >> fail_test
-		diff "test" "test2" >> diff_test
+		echo -e "\n\n$OUT :" >> diff_test2
+		diff "test3" "test4" >> diff_test2
 		((fail++))
 	elif [ $res == 0 ]
 	then
@@ -83,20 +79,19 @@ done
 for OUT in /usr/lib/*;
 do
 	echo "$OUT"
-	./ft_nm $OUT > test 2>> error
+	./ft_nm $OUT > test3 2>> error
 	if [ $? != 0 ]
 	then
 		valgrind ./ft_nm $OUT
 		exit 1
 	fi
-	nm $OUT > test2 2>> error
-	diff "test" "test2"
+	nm $OUT > test4 2>> error
+	diff "test3" "test4"
 	res=$?
 	if [ $res == 1 ]
 	then
-		echo -e "$OUT :\n\n" >> diff_test
-		echo -e "$OUT :\n" >> fail_test
-		diff "test" "test2" >> diff_test
+		echo -e "\n\n$OUT :" >> diff_test2
+		diff "test3" "test4" >> diff_test2
 		((fail++))
 	elif [ $res == 0 ]
 	then
@@ -108,20 +103,19 @@ done
 for OUT in /usr/sbin/*;
 do
 	echo "$OUT"
-	./ft_nm $OUT > test 2>> error
+	./ft_nm $OUT > test3 2>> error
 	if [ $? != 0 ]
 	then
 		valgrind ./ft_nm $OUT
 		exit 1
 	fi
-	nm $OUT > test2 2>> error
-	diff "test" "test2"
+	nm $OUT > test4 2>> error
+	diff "test3" "test4"
 	res=$?
 	if [ $res == 1 ]
 	then
-		echo -e "$OUT :\n\n" >> diff_test
-		echo -e "$OUT :\n" >> fail_test
-		diff "test" "test2" >> diff_test
+		echo -e "\n\n$OUT :" >> diff_test2
+		diff "test3" "test4" >> diff_test2
 		((fail++))
 	elif [ $res == 0 ]
 	then
@@ -133,20 +127,19 @@ done
 for OUT in obj/*;
 do
 	echo "$OUT"
-	./ft_nm $OUT > test 2>> error
+	./ft_nm $OUT > test3 2>> error
 	if [ $? != 0 ]
 	then
 		valgrind ./ft_nm $OUT
 		exit 1
 	fi
-	nm $OUT > test2 2>> error
-	diff "test" "test2"
+	nm $OUT > test4 2>> error
+	diff "test3" "test4"
 	res=$?
 	if [ $res == 1 ]
 	then
-		echo -e "$OUT :\n\n" >> diff_test
-		echo -e "$OUT :\n" >> fail_test
-		diff "test" "test2" >> diff_test
+		echo -e "\n\n$OUT :" >> diff_test2
+		diff "test3" "test4" >> diff_test2
 		((fail++))
 	elif [ $res == 0 ]
 	then
@@ -158,20 +151,19 @@ done
 for OUT in libft/obj/*;
 do
 	echo "$OUT"
-	./ft_nm $OUT > test 2>> error
+	./ft_nm $OUT > test3 2>> error
 	if [ $? != 0 ]
 	then
 		valgrind ./ft_nm $OUT
 		exit 1
 	fi
-	nm $OUT > test2 2>> error
-	diff "test" "test2"
+	nm $OUT > test4 2>> error
+	diff "test3" "test4"
 	res=$?
 	if [ $res == 1 ]
 	then
-		echo -e "$OUT :\n\n" >> diff_test
-		echo -e "$OUT :\n" >> fail_test
-		diff "test" "test2" >> diff_test
+		echo -e "\n\n$OUT :" >> diff_test2
+		diff "test3" "test4" >> diff_test2
 		((fail++))
 	elif [ $res == 0 ]
 	then
@@ -183,20 +175,19 @@ done
 for OUT in /usr/libexec/*;
 do
 	echo "$OUT"
-	./ft_nm $OUT > test 2>> error
+	./ft_nm $OUT > test3 2>> error
 	if [ $? != 0 ]
 	then
 		valgrind ./ft_nm $OUT
 		exit 1
 	fi
-	nm $OUT > test2 2>> error
-	diff "test" "test2"
+	nm $OUT > test4 2>> error
+	diff "test3" "test4"
 	res=$?
 	if [ $res == 1 ]
 	then
-		echo -e "$OUT :\n\n" >> diff_test
-		echo -e "$OUT :\n" >> fail_test
-		diff "test" "test2" >> diff_test
+		echo -e "\n\n$OUT :" >> diff_test2
+		diff "test3" "test4" >> diff_test2
 		((fail++))
 	elif [ $res == 0 ]
 	then
@@ -208,20 +199,19 @@ done
 for OUT in /usr/libexec/apache2/*;
 do
 	echo "$OUT"
-	./ft_nm $OUT > test 2>> error
+	./ft_nm $OUT > test3 2>> error
 	if [ $? != 0 ]
 	then
 		valgrind ./ft_nm $OUT
 		exit 1
 	fi
-	nm $OUT > test2 2>> error
-	diff "test" "test2"
+	nm $OUT > test4 2>> error
+	diff "test3" "test4"
 	res=$?
 	if [ $res == 1 ]
 	then
-		echo -e "$OUT :\n\n" >> diff_test
-		echo -e "$OUT :\n" >> fail_test
-		diff "test" "test2" >> diff_test
+		echo -e "\n\n$OUT :" >> diff_test2
+		diff "test3" "test4" >> diff_test2
 		((fail++))
 	elif [ $res == 0 ]
 	then
