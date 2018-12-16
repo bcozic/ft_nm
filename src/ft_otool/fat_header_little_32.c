@@ -6,19 +6,18 @@
 /*   By: bcozic <bcozic@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/14 13:58:43 by bcozic            #+#    #+#             */
-/*   Updated: 2018/12/15 21:01:52 by bcozic           ###   ########.fr       */
+/*   Updated: 2018/12/16 14:49:30 by bcozic           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_otool.h"
 
-static int	only_one_arch(struct fat_header *header, t_data *data, void *ptr)
+static int	only_one_arch(struct fat_header *header, t_data *data, void *ptr,
+		void *ptr_arch)
 {
 	struct fat_arch		*arch;
-	void				*ptr_arch;
 	uint32_t			i;
 
-	ptr_arch = (char*)ptr + sizeof(struct fat_header);
 	i = 0;
 	while (i++ < header->nfat_arch)
 	{
@@ -53,9 +52,9 @@ void		fat_header_little_32(void *ptr, t_data *data)
 	if ((size_t)ptr + sizeof(struct fat_arch)
 			* header->nfat_arch > data->end_file)
 		return ;
-	if (only_one_arch(header, data, ptr))
-		return ;
 	ptr_arch = (char*)ptr + sizeof(struct fat_header);
+	if (only_one_arch(header, data, ptr, ptr_arch))
+		return ;
 	i = 0;
 	while (i++ < header->nfat_arch)
 	{

@@ -6,7 +6,7 @@
 /*   By: bcozic <bcozic@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/12 17:33:43 by bcozic            #+#    #+#             */
-/*   Updated: 2018/12/15 21:06:41 by bcozic           ###   ########.fr       */
+/*   Updated: 2018/12/16 13:49:07 by bcozic           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void		get_header_64(t_data *data, void *offset, void *ptr)
 	ranlib = (struct ranlib_64*)offset;
 	current = 0;
 	last_offset = 0;
-	ft_printf("Archive : %s:\n", data->file_name);
+	ft_printf("Archive : %s\n", data->file_name);
 	while (current < size)
 	{
 		if (ranlib->ran_off > last_offset)
@@ -78,7 +78,7 @@ void		get_header_32(t_data *data, void *offset, void *ptr)
 	ranlib = (struct ranlib*)offset;
 	current = 0;
 	last_offset = 0;
-	ft_printf("Archive %s:\n", data->file_name);
+	ft_printf("Archive : %s\n", data->file_name);
 	while (current < size && size)
 	{
 		if (ranlib->ran_off != last_offset)

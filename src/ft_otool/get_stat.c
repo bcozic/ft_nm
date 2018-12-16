@@ -6,7 +6,7 @@
 /*   By: bcozic <bcozic@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/06 13:38:44 by bcozic            #+#    #+#             */
-/*   Updated: 2018/12/15 20:02:48 by bcozic           ###   ########.fr       */
+/*   Updated: 2018/12/16 14:45:40 by bcozic           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,8 @@ int	get_stat(int fd, char *file_name, char *exec_name)
 	data.end_file = (size_t)data.ptr + (size_t)buf.st_size;
 	data.file_name = file_name;
 	if ((size_t)data.ptr + sizeof(struct mach_header_64)
-			> data.end_file || !print_name(data.ptr, &data) || !(ft_otool(data.ptr, &data)))
+			> data.end_file || !print_name(data.ptr, &data)
+			|| !(ft_otool(data.ptr, &data)))
 		ft_printf("%s: is not an object file\n", file_name);
 	if ((munmap(data.ptr, (size_t)buf.st_size)) < 0)
 		return (aff_error(exec_name, file_name, "munmap Failure\n"));

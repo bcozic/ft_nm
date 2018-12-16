@@ -6,7 +6,7 @@
 /*   By: bcozic <bcozic@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/07 09:56:17 by bcozic            #+#    #+#             */
-/*   Updated: 2018/12/15 18:43:18 by bcozic           ###   ########.fr       */
+/*   Updated: 2018/12/16 14:44:25 by bcozic           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@ void		handle_little_32(void *ptr, t_data *data)
 	uint32_t			i;
 
 	data->ptr = ptr;
-	header = (struct mach_header*) ptr;
-	if ((size_t)ptr +  header->sizeofcmds > data->end_file)
+	header = (struct mach_header*)ptr;
+	if ((size_t)ptr + header->sizeofcmds > data->end_file)
 		return ;
 	lc = (void*)((size_t)ptr + sizeof(struct mach_header));
 	i = 0;
