@@ -3,17 +3,12 @@
 success=0
 fail=0
 
-rm diff_test
-rm fail_test
+rm -f diff_test
+rm -f fail_test
 for OUT in /usr/bin/*;
 do
 	echo "$OUT"
 	./ft_otool $OUT > test 2>> error
-	if [ $? != 0 ]
-	then
-		valgrind ./ft_otool $OUT
-		exit 1
-	fi
 	otool -t $OUT > test2 2>> error
 	diff "test" "test2"
 	res=$?
@@ -34,11 +29,6 @@ for OUT in /bin/*;
 do
 	echo "$OUT"
 	./ft_otool $OUT > test 2>> error
-	if [ $? != 0 ]
-	then
-		valgrind ./ft_otool $OUT
-		exit 1
-	fi
 	otool -t $OUT > test2 2>> error
 	diff "test" "test2"
 	res=$?
@@ -59,11 +49,6 @@ for OUT in /sbin/*;
 do
 	echo "$OUT"
 	./ft_otool $OUT > test 2>> error
-	if [ $? != 0 ]
-	then
-		valgrind ./ft_otool $OUT
-		exit 1
-	fi
 	otool -t $OUT > test2 2>> error
 	diff "test" "test2"
 	res=$?
@@ -84,11 +69,6 @@ for OUT in /usr/lib/*;
 do
 	echo "$OUT"
 	./ft_otool $OUT > test 2>> error
-	if [ $? != 0 ]
-	then
-		valgrind ./ft_otool $OUT
-		exit 1
-	fi
 	otool -t $OUT > test2 2>> error
 	diff "test" "test2"
 	res=$?
@@ -109,11 +89,6 @@ for OUT in /usr/sbin/*;
 do
 	echo "$OUT"
 	./ft_otool $OUT > test 2>> error
-	if [ $? != 0 ]
-	then
-		valgrind ./ft_otool $OUT
-		exit 1
-	fi
 	otool -t $OUT > test2 2>> error
 	diff "test" "test2"
 	res=$?
@@ -134,11 +109,6 @@ for OUT in obj/*;
 do
 	echo "$OUT"
 	./ft_otool $OUT > test 2>> error
-	if [ $? != 0 ]
-	then
-		valgrind ./ft_otool $OUT
-		exit 1
-	fi
 	otool -t $OUT > test2 2>> error
 	diff "test" "test2"
 	res=$?
@@ -159,11 +129,6 @@ for OUT in libft/obj/*;
 do
 	echo "$OUT"
 	./ft_otool $OUT > test 2>> error
-	if [ $? != 0 ]
-	then
-		valgrind ./ft_otool $OUT
-		exit 1
-	fi
 	otool -t $OUT > test2 2>> error
 	diff "test" "test2"
 	res=$?
@@ -184,11 +149,6 @@ for OUT in /usr/libexec/*;
 do
 	echo "$OUT"
 	./ft_otool $OUT > test 2>> error
-	if [ $? != 0 ]
-	then
-		valgrind ./ft_otool $OUT
-		exit 1
-	fi
 	otool -t $OUT > test2 2>> error
 	diff "test" "test2"
 	res=$?
@@ -209,11 +169,6 @@ for OUT in /usr/libexec/apache2/*;
 do
 	echo "$OUT"
 	./ft_otool $OUT > test 2>> error
-	if [ $? != 0 ]
-	then
-		valgrind ./ft_otool $OUT
-		exit 1
-	fi
 	otool -t $OUT > test2 2>> error
 	diff "test" "test2"
 	res=$?
