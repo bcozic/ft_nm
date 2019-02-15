@@ -9,5 +9,10 @@ for ((i=1; i<=10000; i++)); do
 	dd if=$1 of=file1 bs=1 count=$begin > /dev/null 2>&1
 	dd if=/dev/random of=file2 bs=1 count=$random_cpy > /dev/null 2>&1
 	cat file2 >> file1
-	./ft_nm file1
+	./ft_nm file1 > /dev/null 2>&1
+	if [ $? -gt 2 ]
+	then
+		valgrind ./ft_nm file1
+		exit 1
+	fi
 done

@@ -8,6 +8,11 @@ for OUT in /usr/bin/*;
 do
 	echo "$OUT"
 	./ft_nm $OUT > test3 2>> error
+	if [ $? -gt 2 ]
+	then
+		valgrind ./ft_nm $OUT
+		exit 1
+	fi
 	nm $OUT > test4 2>> error
 	diff "test3" "test4"
 	res=$?
@@ -27,6 +32,11 @@ for OUT in /bin/*;
 do
 	echo "$OUT"
 	./ft_nm $OUT > test3 2>> error
+	if [ $? -gt 2 ]
+	then
+		valgrind ./ft_nm $OUT
+		exit 1
+	fi
 	nm $OUT > test4 2>> error
 	diff "test3" "test4"
 	res=$?
@@ -46,6 +56,11 @@ for OUT in /sbin/*;
 do
 	echo "$OUT"
 	./ft_nm $OUT > test3 2>> error
+	if [ $? -gt 2 ]
+	then
+		valgrind ./ft_nm $OUT
+		exit 1
+	fi
 	nm $OUT > test4 2>> error
 	diff "test3" "test4"
 	res=$?
@@ -65,6 +80,11 @@ for OUT in /usr/lib/*;
 do
 	echo "$OUT"
 	./ft_nm $OUT > test3 2>> error
+	if [ $? -gt 2 ]
+	then
+		valgrind ./ft_nm $OUT
+		exit 1
+	fi
 	nm $OUT > test4 2>> error
 	diff "test3" "test4"
 	res=$?
@@ -84,6 +104,11 @@ for OUT in /usr/sbin/*;
 do
 	echo "$OUT"
 	./ft_nm $OUT > test3 2>> error
+	if [ $? -gt 2 ]
+	then
+		valgrind ./ft_nm $OUT
+		exit 1
+	fi
 	nm $OUT > test4 2>> error
 	diff "test3" "test4"
 	res=$?
@@ -103,6 +128,11 @@ for OUT in obj/*;
 do
 	echo "$OUT"
 	./ft_nm $OUT > test3 2>> error
+	if [ $? -gt 2 ]
+	then
+		valgrind ./ft_nm $OUT
+		exit 1
+	fi
 	nm $OUT > test4 2>> error
 	diff "test3" "test4"
 	res=$?
@@ -122,6 +152,11 @@ for OUT in libft/obj/*;
 do
 	echo "$OUT"
 	./ft_nm $OUT > test3 2>> error
+	if [ $? -gt 2 ]
+	then
+		valgrind ./ft_nm $OUT
+		exit 1
+	fi
 	nm $OUT > test4 2>> error
 	diff "test3" "test4"
 	res=$?
@@ -141,6 +176,11 @@ for OUT in /usr/libexec/*;
 do
 	echo "$OUT"
 	./ft_nm $OUT > test3 2>> error
+	if [ $? -gt 2 ]
+	then
+		valgrind ./ft_nm $OUT
+		exit 1
+	fi
 	nm $OUT > test4 2>> error
 	diff "test3" "test4"
 	res=$?
@@ -160,6 +200,11 @@ for OUT in /usr/libexec/apache2/*;
 do
 	echo "$OUT"
 	./ft_nm $OUT > test3 2>> error
+	if [ $? -gt 2 ]
+	then
+		valgrind ./ft_nm $OUT
+		exit 1
+	fi
 	nm $OUT > test4 2>> error
 	diff "test3" "test4"
 	res=$?
