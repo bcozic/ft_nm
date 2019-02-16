@@ -3,25 +3,25 @@
 success=0
 fail=0
 
-rm -f diff_test
-rm -f fail_test
+rm -f diff_otool
+rm -f fail_otool
 for OUT in /usr/bin/*;
 do
 	echo "$OUT"
-	./ft_otool $OUT > test 2>> error
+	./ft_otool $OUT > out_ft_otool 2>> error_otool
 	if [ $? -gt 2 ]
 	then
 		valgrind ./ft_otool $OUT
 		exit 1
 	fi
-	otool -t $OUT > test2 2>> error
-	diff "test" "test2"
+	otool -t $OUT > out_otool 2>> error_otool
+	diff "out_ft_otool" "out_otool"
 	res=$?
 	if [ $res == 1 ]
 	then
-		echo -e "$OUT :\n\n" >> diff_test
-		echo -e "$OUT :\n" >> fail_test
-		diff "test" "test2" >> diff_test
+		echo -e "$OUT :\n\n" >> diff_otool
+		echo -e "$OUT :\n" >> fail_otool
+		diff "out_ft_otool" "out_otool" >> diff_otool
 		((fail++))
 	elif [ $res == 0 ]
 	then
@@ -33,20 +33,20 @@ done
 for OUT in /bin/*;
 do
 	echo "$OUT"
-	./ft_otool $OUT > test 2>> error
+	./ft_otool $OUT > out_ft_otool 2>> error_otool
 	if [ $? -gt 2 ]
 	then
 		valgrind ./ft_otool $OUT
 		exit 1
 	fi
-	otool -t $OUT > test2 2>> error
-	diff "test" "test2"
+	otool -t $OUT > out_otool 2>> error_otool
+	diff "out_ft_otool" "out_otool"
 	res=$?
 	if [ $res == 1 ]
 	then
-		echo -e "$OUT :\n\n" >> diff_test
-		echo -e "$OUT :\n" >> fail_test
-		diff "test" "test2" >> diff_test
+		echo -e "$OUT :\n\n" >> diff_otool
+		echo -e "$OUT :\n" >> fail_otool
+		diff "out_ft_otool" "out_otool" >> diff_otool
 		((fail++))
 	elif [ $res == 0 ]
 	then
@@ -58,20 +58,20 @@ done
 for OUT in /sbin/*;
 do
 	echo "$OUT"
-	./ft_otool $OUT > test 2>> error
+	./ft_otool $OUT > out_ft_otool 2>> error_otool
 	if [ $? -gt 2 ]
 	then
 		valgrind ./ft_otool $OUT
 		exit 1
 	fi
-	otool -t $OUT > test2 2>> error
-	diff "test" "test2"
+	otool -t $OUT > out_otool 2>> error_otool
+	diff "out_ft_otool" "out_otool"
 	res=$?
 	if [ $res == 1 ]
 	then
-		echo -e "$OUT :\n\n" >> diff_test
-		echo -e "$OUT :\n" >> fail_test
-		diff "test" "test2" >> diff_test
+		echo -e "$OUT :\n\n" >> diff_otool
+		echo -e "$OUT :\n" >> fail_otool
+		diff "out_ft_otool" "out_otool" >> diff_otool
 		((fail++))
 	elif [ $res == 0 ]
 	then
@@ -83,20 +83,20 @@ done
 for OUT in /usr/lib/*;
 do
 	echo "$OUT"
-	./ft_otool $OUT > test 2>> error
+	./ft_otool $OUT > out_ft_otool 2>> error_otool
 	if [ $? -gt 2 ]
 	then
 		valgrind ./ft_otool $OUT
 		exit 1
 	fi
-	otool -t $OUT > test2 2>> error
-	diff "test" "test2"
+	otool -t $OUT > out_otool 2>> error_otool
+	diff "out_ft_otool" "out_otool"
 	res=$?
 	if [ $res == 1 ]
 	then
-		echo -e "$OUT :\n\n" >> diff_test
-		echo -e "$OUT :\n" >> fail_test
-		diff "test" "test2" >> diff_test
+		echo -e "$OUT :\n\n" >> diff_otool
+		echo -e "$OUT :\n" >> fail_otool
+		diff "out_ft_otool" "out_otool" >> diff_otool
 		((fail++))
 	elif [ $res == 0 ]
 	then
@@ -108,20 +108,20 @@ done
 for OUT in /usr/sbin/*;
 do
 	echo "$OUT"
-	./ft_otool $OUT > test 2>> error
+	./ft_otool $OUT > out_ft_otool 2>> error_otool
 	if [ $? -gt 2 ]
 	then
 		valgrind ./ft_otool $OUT
 		exit 1
 	fi
-	otool -t $OUT > test2 2>> error
-	diff "test" "test2"
+	otool -t $OUT > out_otool 2>> error_otool
+	diff "out_ft_otool" "out_otool"
 	res=$?
 	if [ $res == 1 ]
 	then
-		echo -e "$OUT :\n\n" >> diff_test
-		echo -e "$OUT :\n" >> fail_test
-		diff "test" "test2" >> diff_test
+		echo -e "$OUT :\n\n" >> diff_otool
+		echo -e "$OUT :\n" >> fail_otool
+		diff "out_ft_otool" "out_otool" >> diff_otool
 		((fail++))
 	elif [ $res == 0 ]
 	then
@@ -133,20 +133,20 @@ done
 for OUT in obj/*;
 do
 	echo "$OUT"
-	./ft_otool $OUT > test 2>> error
+	./ft_otool $OUT > out_ft_otool 2>> error_otool
 	if [ $? -gt 2 ]
 	then
 		valgrind ./ft_otool $OUT
 		exit 1
 	fi
-	otool -t $OUT > test2 2>> error
-	diff "test" "test2"
+	otool -t $OUT > out_otool 2>> error_otool
+	diff "out_ft_otool" "out_otool"
 	res=$?
 	if [ $res == 1 ]
 	then
-		echo -e "$OUT :\n\n" >> diff_test
-		echo -e "$OUT :\n" >> fail_test
-		diff "test" "test2" >> diff_test
+		echo -e "$OUT :\n\n" >> diff_otool
+		echo -e "$OUT :\n" >> fail_otool
+		diff "out_ft_otool" "out_otool" >> diff_otool
 		((fail++))
 	elif [ $res == 0 ]
 	then
@@ -158,20 +158,20 @@ done
 for OUT in libft/obj/*;
 do
 	echo "$OUT"
-	./ft_otool $OUT > test 2>> error
+	./ft_otool $OUT > out_ft_otool 2>> error_otool
 	if [ $? -gt 2 ]
 	then
 		valgrind ./ft_otool $OUT
 		exit 1
 	fi
-	otool -t $OUT > test2 2>> error
-	diff "test" "test2"
+	otool -t $OUT > out_otool 2>> error_otool
+	diff "out_ft_otool" "out_otool"
 	res=$?
 	if [ $res == 1 ]
 	then
-		echo -e "$OUT :\n\n" >> diff_test
-		echo -e "$OUT :\n" >> fail_test
-		diff "test" "test2" >> diff_test
+		echo -e "$OUT :\n\n" >> diff_otool
+		echo -e "$OUT :\n" >> fail_otool
+		diff "out_ft_otool" "out_otool" >> diff_otool
 		((fail++))
 	elif [ $res == 0 ]
 	then
@@ -183,20 +183,20 @@ done
 for OUT in /usr/libexec/*;
 do
 	echo "$OUT"
-	./ft_otool $OUT > test 2>> error
+	./ft_otool $OUT > out_ft_otool 2>> error_otool
 	if [ $? -gt 2 ]
 	then
 		valgrind ./ft_otool $OUT
 		exit 1
 	fi
-	otool -t $OUT > test2 2>> error
-	diff "test" "test2"
+	otool -t $OUT > out_otool 2>> error_otool
+	diff "out_ft_otool" "out_otool"
 	res=$?
 	if [ $res == 1 ]
 	then
-		echo -e "$OUT :\n\n" >> diff_test
-		echo -e "$OUT :\n" >> fail_test
-		diff "test" "test2" >> diff_test
+		echo -e "$OUT :\n\n" >> diff_otool
+		echo -e "$OUT :\n" >> fail_otool
+		diff "out_ft_otool" "out_otool" >> diff_otool
 		((fail++))
 	elif [ $res == 0 ]
 	then
@@ -208,20 +208,20 @@ done
 for OUT in /usr/libexec/apache2/*;
 do
 	echo "$OUT"
-	./ft_otool $OUT > test 2>> error
+	./ft_otool $OUT > out_ft_otool 2>> error_otool
 	if [ $? -gt 2 ]
 	then
 		valgrind ./ft_otool $OUT
 		exit 1
 	fi
-	otool -t $OUT > test2 2>> error
-	diff "test" "test2"
+	otool -t $OUT > out_otool 2>> error_otool
+	diff "out_ft_otool" "out_otool"
 	res=$?
 	if [ $res == 1 ]
 	then
-		echo -e "$OUT :\n\n" >> diff_test
-		echo -e "$OUT :\n" >> fail_test
-		diff "test" "test2" >> diff_test
+		echo -e "$OUT :\n\n" >> diff_otool
+		echo -e "$OUT :\n" >> fail_otool
+		diff "out_ft_otool" "out_otool" >> diff_otool
 		((fail++))
 	elif [ $res == 0 ]
 	then
